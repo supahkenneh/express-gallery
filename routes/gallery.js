@@ -52,5 +52,21 @@ router.route('/:id')
       });
   });
 
+router.route('/:id/edit')
+  .get((req, res) => {
+    const id = req.params.id;
+    return Gallery
+      .query({ where: { id } })
+      .fetch()
+      .then(photo => {
+        return res.render('edit', {
+          photo: photo.attributes,
+        })
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
+  });
+
 
 module.exports = router;
