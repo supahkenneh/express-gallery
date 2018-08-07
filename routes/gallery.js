@@ -32,10 +32,9 @@ router.route('/')
         return res.json({ message: err.message });
       });
   });
-  
+
 router.route('/new')
   .get((req, res) => {
-    console.log('hi');
     return res.render('new');
   });
 
