@@ -21,6 +21,16 @@ router.route('/')
     .catch(err => {
       return res.json({ message: err.message });
     });
-  });
+  })
+  .get((req, res) => {
+    return Gallery
+    .fetchAll()
+    .then(gallery => {
+      return res.json(gallery);
+    })
+    .catch(err => {
+      return res.json({ message: err.message });
+    });
+  })
 
 module.exports = router;
