@@ -1,13 +1,12 @@
 // Update with your config settings.
-const path =  require('path');
+const path = require('path');
 
 module.exports = {
-
   development: {
     client: 'postgresql',
     connection: {
       database: 'express_gallery',
-      user:     'express_gallery_user',
+      user: 'express_gallery_user',
       password: 'password'
     },
     pool: {
@@ -18,14 +17,14 @@ module.exports = {
       tableName: 'knex_migrations',
       directory: path.join(__dirname, 'db', 'migrations')
     },
-    debug:true
+    debug: true
   },
 
   staging: {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -41,7 +40,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -52,5 +51,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };

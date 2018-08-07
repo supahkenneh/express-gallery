@@ -1,5 +1,5 @@
 'use strict';
 
 const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
-const config = require('../knexfile')[ENVIRONMENT];j
+const config = require('../knexfile')[ENVIRONMENT];
 module.exports= require('knex')(config);
