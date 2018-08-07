@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('photos', table => {
+  return knex.schema.createTable('gallery', table => {
     table.increments();
     table.string('author', 50).notNullable();
     table.string('link', 255).notNullable();
@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 };;
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('photos');
+  return knex.schema.dropTable('gallery');
 };

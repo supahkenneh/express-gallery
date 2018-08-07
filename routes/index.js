@@ -1,9 +1,9 @@
 const express = require('express');
 // const users = require('./users');
-const photos = require('./photos');
+const gallery = require('./gallery');
 const router = express.Router();
 
 // router.use('/users', users);
-router.use('/gallery', photos);
+router.use('/gallery', gallery);
 
 module.exports = router;
