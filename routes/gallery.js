@@ -12,25 +12,39 @@ router.route('/')
     } = req.body;
     author = author.trim();
     link = link.trim().toLowerCase();
-    
+
     return new Gallery({ author, link, description })
-    .save()
-    .then(gallery => {
-      return res.json(gallery);
-    })
-    .catch(err => {
-      return res.json({ message: err.message });
-    });
+      .save()
+      .then(gallery => {
+        return res.json(gallery);
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   })
   .get((req, res) => {
     return Gallery
-    .fetchAll()
-    .then(gallery => {
-      return res.json(gallery);
-    })
-    .catch(err => {
-      return res.json({ message: err.message });
-    });
+      .fetchAll()
+      .then(gallery => {
+        return res.json(gallery);
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
+  });
+
+router.route('/:id')
+  .get((req, res) => {
+    const id = req.params.id;
+    return Gallery
+      .query({where: {id}})
+      .fetchAll()
+      .then(photo => {
+        return res.json(photo);
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   })
 
 module.exports = router;
