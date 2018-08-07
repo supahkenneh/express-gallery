@@ -70,6 +70,17 @@ router.route('/:id')
       .catch(err => {
         return res.json({ message: err.message });
       });
+  })
+  .delete((req, res) => {
+    const id = req.params.id;
+    return new Gallery({ id })
+      .destroy()
+      .then(result => {
+        return res.redirect('/gallery');
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   });
 
 router.route('/:id/edit')
