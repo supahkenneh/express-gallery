@@ -32,12 +32,18 @@ router.route('/')
         return res.json({ message: err.message });
       });
   });
+  
+router.route('/new')
+  .get((req, res) => {
+    console.log('hi');
+    return res.render('new');
+  });
 
 router.route('/:id')
   .get((req, res) => {
     const id = req.params.id;
     return Gallery
-      .query({where: {id}})
+      .query({ where: { id } })
       .fetchAll()
       .then(photo => {
         return res.json(photo);
@@ -45,6 +51,7 @@ router.route('/:id')
       .catch(err => {
         return res.json({ message: err.message });
       });
-  })
+  });
+
 
 module.exports = router;

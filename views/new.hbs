@@ -1,0 +1,16 @@
+<h1 id="main_header">Add To Gallery</h1>
+<form action="/gallery" enctype="application/x-www-form-urlencoded" method="POST">
+  <h1 class="new_inputs">Author:
+    <br>
+    <input type="text" name="author" class="simple_line" value="{{photo.author}}">
+  </h1>
+  <h1 class="new_inputs">Link:
+    <br>
+    <input type="text" name="link" class="simple_line" value="{{photo.link}}">
+  </h1>
+  <h1 class="new_inputs">Description:
+    <br>
+    <input type="text" name="description" class="simple_line" value="{{photo.description}}">
+  </h1>
+  <input type="submit" value="Add" id="submit_button">
+</form>
