@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('photos', table => {
     table.increments();
-    table.integer('author_id').notNullable().references('users.id');
+    table.string('author', 50).notNullable();
     table.string('link', 255).notNullable();
     table.text('description');
     table.timestamps(true, true);
