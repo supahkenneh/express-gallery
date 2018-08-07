@@ -24,11 +24,20 @@ router
   })
   .get((req, res) => {
     return Photo.fetchAll()
+      .then(result => {
+        if (result.length === 0) {
+          throw new Error('There are currently no photos.');
+        }
+        return result.models;
+      })
       .then(photos => {
-        return res.json(photos);
+        console.log(photos);
+
+        return res.render('./photos/index', {photos: photos});
       })
       .catch(err => {
-        return res.json({ message: err.message });
+        console.log('errors', err);
+        return res.render('./photos/index', { errors: err.message });
       });
   });
 
