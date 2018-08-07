@@ -26,7 +26,7 @@ router.route('/')
     return Gallery
       .fetchAll()
       .then(gallery => {
-        return res.json(gallery);
+        return res.render('index', { gallery: gallery.models });
       })
       .catch(err => {
         return res.json({ message: err.message });
