@@ -50,6 +50,26 @@ router.route('/:id')
       .catch(err => {
         return res.json({ message: err.message });
       });
+  })
+  .put((req, res) => {
+    const id = req.params.id;
+    let {
+      author,
+      link,
+      description
+    } = req.body;
+    return new Gallery({ id })
+      .save({
+        author,
+        link,
+        description
+      })
+      .then(edited => {
+        return res.json(edited)
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   });
 
 router.route('/:id/edit')
@@ -67,6 +87,5 @@ router.route('/:id/edit')
         return res.json({ message: err.message });
       });
   });
-
 
 module.exports = router;
