@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const flash = require('connect-flash');
 const User = require('../db/models/User');
+
+router.use(flash());
 
 passport.serializeUser((user, done) => {
   return done(null, {
@@ -57,13 +60,13 @@ router.route('/register')
     res.render('../views/authpages/register');
   })
   .post((req, res) => {
-    console.log(req);
     return new User({
       username: req.body.username,
       password: req.body.password
     })
       .save()
       .then(user => {
+        req.flash('info', 'HEY');
         res.redirect('/login');
       })
       .catch(err => {

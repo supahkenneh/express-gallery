@@ -4,7 +4,9 @@
 {{#each gallery}}
 <div>{{this.attributes.author}}</div>
 <div>
-  <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
-  </div>
+  <a href="http://localhost:3005/gallery/{{this.id}}">
+    <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
+  </a>
+</div>
 <div>{{this.attributes.description}}</div>
 {{/each}}

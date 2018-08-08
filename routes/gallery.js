@@ -48,7 +48,9 @@ router.route('/:id')
       .query({ where: { id } })
       .fetchAll()
       .then(photo => {
-        return res.json(photo);
+        return res.render('./gallerypages/photo', { 
+          photo: photo.models[0]
+        });
       })
       .catch(err => {
         return res.json({ message: err.message });

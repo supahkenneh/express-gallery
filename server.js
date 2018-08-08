@@ -24,8 +24,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use(flash());
-
 app.use(methodOverride((req, res) => {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     let method = req.body._method;
