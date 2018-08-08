@@ -1,0 +1,25 @@
+<ol>
+  {{#if title}}
+  <ul>
+
+    <div>
+      <h3>{{title}}</h2>
+        <h4>by {{author_username}} @ {{link}}</h3>
+    </div>
+    <img src="{{link}}" height="320" width="540">
+    </div>
+    <div>
+      <p>{{description}}</p>
+    </div>
+
+  </ul>
+  {{else}}
+  <h3>There are currently no photos.</h3>
+  {{/if}}
+</ol>
+{{!--
+<form action='/photos/new' method='get'>
+  <button type='submit'>Add a new photo</button>
+</form> --}} {{#each errors}}
+<h3>{{message}}</h3>
+{{/each}} {{!-- {{>indexButtons}} --}}

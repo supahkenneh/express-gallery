@@ -30,10 +30,6 @@ app.set('view engine', '.hbs');
 
 app.use('/', routes);
 
-app.get('/', (req, res) => {
-  res.render('./index');
-});
-
 app.listen(PORT, 'localhost', () => {
   console.log(`Server listening on port: ${PORT}`);
 });

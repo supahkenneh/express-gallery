@@ -1,1 +1,29 @@
-Test
+<ol>
+  {{#if photos}} {{#each photos}}
+
+  <ul>
+
+    <div>
+      <h3>{{this.attributes.title}}</h2>
+        <h4>by {{this.attributes.author_username}} @ {{this.attributes.link}}</h3>
+    </div>
+    <a href="/gallery/{{this.attributes.id}}">
+      <img src="{{this.attributes.link}}" height="240" width="320">
+    </a>
+    </div>
+    <div>
+
+      <p>{{this.attributes.description}}</p>
+    </div>
+
+  </ul>
+  {{/each}} {{else}}
+  <h3>There are currently no photos.</h3>
+  {{/if}}
+</ol>
+{{!--
+<form action='/photos/new' method='get'>
+  <button type='submit'>Add a new photo</button>
+</form> --}} {{#each errors}}
+<h3>{{message}}</h3>
+{{/each}} {{!-- {{>indexButtons}} --}}
