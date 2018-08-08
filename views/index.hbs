@@ -1,5 +1,7 @@
 {{#each gallery}}
 <div>{{this.attributes.author}}</div>
-<div>{{this.attributes.link}}</div>
+<div>
+  <img src="{{this.attributes.link}}" alt="image">
+  </div>
 <div>{{this.attributes.description}}</div>
 {{/each}}
