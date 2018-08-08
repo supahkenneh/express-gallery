@@ -1,13 +1,27 @@
 const express = require('express');
+const session = require('express-session');
+const Redis = require('connect-redis')(session);
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const app = express();
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const PORT = process.env.port || 3005;
-const routes = require('./routes');
+const User = require('./db/models/User');
+const auth = require('./routes/auth');
+const user = require('./routes/users');
+const gallery = require('./routes/gallery');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('./public'));
+
+app.use(session({
+  store: new Redis(),
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use(methodOverride((req, res) => {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -17,7 +31,13 @@ app.use(methodOverride((req, res) => {
   }
 }));
 
-app.use('/', routes);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', auth);
+app.use('/users', user);
+app.use('/gallery', gallery);
+
 
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',

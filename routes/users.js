@@ -1,8 +1,7 @@
-// const express = require('express');
-// const router = express.Router();
+const router = require('express').Router();
 
-// router.get('/', (req, res) => {
-//   res.send('users');
-// })
+router.get('/', (req, res) => {
+  res.send('you got users');
+})
 
-// module.exports = router;
+module.exports = router;
