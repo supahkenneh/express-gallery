@@ -1,0 +1,33 @@
+$headerFont: 'Roboto', Sans-Serif;
+$contentFont: 'Droid Serif', Sans-Serif;
+
+body {
+  // background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/stripes-light.png");
+  background-color: whitesmoke;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#main_header {
+  font-family: $headerFont;
+  font-size: 82px;
+  color: #7C7E84;
+  margin-right: 600px;
+  margin-top: 68px;
+}
+
+#header_line {
+  position: fixed;
+  top: 12%;
+  width: 100%;
+  border-bottom: dotted lightgray 2px;
+}
+
+#header_divide {
+  position: fixed;
+  top: 16%;
+  height: 90px;
+  border-right: dotted lightgray 2px;
+  margin-left: 50px;
+}

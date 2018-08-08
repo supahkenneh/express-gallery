@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
-const flash = require('connect-flash');
 const PORT = process.env.port || 3005;
 const User = require('./db/models/User');
 const auth = require('./routes/auth');

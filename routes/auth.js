@@ -2,10 +2,10 @@ const express = require('express')
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const flash = require('connect-flash');
 const User = require('../db/models/User');
+const bcrypt = require('bcrypt');
+const saltedRounds = 12;
 
-router.use(flash());
 
 passport.serializeUser((user, done) => {
   return done(null, {
@@ -40,10 +40,13 @@ passport.use(new LocalStrategy(function (username, password, done) {
         return done(null, false, { message: 'bad username or password' });
       } else {
         user = user.toJSON();
-        if (password === user.password) { return done(null, user); }
-        else {
-          return done(null, false, { message: 'bad username or password' });
-        }
+        bcrypt.compare(password, user.password)
+          .then(samePassword => {
+            if (samePassword) { return done(null, user); }
+            else {
+              return done(null, false, { message: 'bad username or password' });
+            }
+          })
       }
     })
     .catch(err => {
@@ -60,19 +63,24 @@ router.route('/register')
     res.render('../views/authpages/register');
   })
   .post((req, res) => {
-    return new User({
-      username: req.body.username,
-      password: req.body.password
-    })
-      .save()
-      .then(user => {
-        req.flash('info', 'HEY');
-        res.redirect('/login');
+    bcrypt.genSalt(saltedRounds, (err, salt) => {
+      if (err) { return res.status(500); }
+      bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
+        if (err) { return res.status(500); }
+        return new User({
+          username: req.body.username,
+          password: hashedPassword
+        })
+          .save()
+          .then(user => {
+            res.redirect('/login');
+          })
+          .catch(err => {
+            console.log(err);
+            return res.send('Could not register user');
+          });
       })
-      .catch(err => {
-        console.log(err);
-        return res.send('Could not register user');
-      });
+    })
   });
 
 router.route('/login')
