@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('./auth');
 
 const Gallery = require('../db/models/Gallery');
 
@@ -11,8 +10,8 @@ router.route('/')
       link,
       description
     } = req.body;
-    // author = author.trim();
-    // link = link.trim().toLowerCase();
+    author = author.trim();
+    link = link.trim().toLowerCase();
 
     return new Gallery({ author, link, description })
       .save()

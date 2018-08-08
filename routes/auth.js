@@ -5,24 +5,44 @@ const LocalStrategy = require('passport-local');
 const User = require('../db/models/User');
 
 passport.serializeUser((user, done) => {
-  console.log('serializing');
-  return done(null, {
-    id: user.id,
-    username: user.username
-  });
+  console.log('hi')
+  if (user === null) {
+    return done(null, false)
+  } else {
+    return done(null, {
+      id: user.id,
+      username: user.username
+    });
+  }
 });
 
 passport.deserializeUser((user, done) => {
-  return done(user);
+  console.log('deserializing');
+  new User({ id: user.id }).fetch()
+    .then(user => {
+      if(!user) {
+        return done(null, false);
+      } else {
+        user = user.toJSON();
+        return done(null, {
+          id: user.id,
+          username: user.username
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      return done(err);
+    });
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
   return new User({ username: username }).fetch()
     .then(user => {
-      user = user.toJSON();
       if (user === null) {
         return done(null, false, { message: 'bad username or password' });
       } else {
+        user = user.toJSON();
         if (password === user.password) { return done(null, user); }
         else {
           return done(null, false, { message: 'bad username or password' });
@@ -38,23 +58,23 @@ router.get('/', (req, res) => {
   res.send('render regular page');
 });
 
-router.get('/register', (req, res) => {
-  res.render('../views/authpages/register');
-})
-
-router.post('/register', (req, res) => {
-  return new User({
-    username: req.body.username,
-    password: req.body.password
+router.route('/register')
+  .get((req, res) => {
+    res.render('../views/authpages/register');
   })
-    .save()
-    .then(user => {
-      res.redirect('/gallery');
+  .post((req, res) => {
+    return new User({
+      username: req.body.username,
+      password: req.body.password
     })
-    .catch(err => {
-      return res.send('Could not register user');
-    });
-});
+      .save()
+      .then(user => {
+        res.redirect('/gallery');
+      })
+      .catch(err => {
+        return res.send('Could not register user');
+      });
+  });
 
 router.route('/login')
   .post(passport.authenticate('local', {
