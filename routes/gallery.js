@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const helpers = require('../helpers/helpers');
 
 const Gallery = require('../db/models/Gallery');
 
@@ -22,7 +23,7 @@ router.route('/')
         return res.json({ message: err.message });
       });
   })
-  .get((req, res) => {
+  .get(helpers.isAuthenticated, (req, res) => {
     return Gallery
       .fetchAll()
       .then(gallery => {

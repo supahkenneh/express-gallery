@@ -63,7 +63,7 @@ router.route('/register')
     })
       .save()
       .then(user => {
-        res.redirect('/gallery');
+        res.redirect('/login');
       })
       .catch(err => {
         return res.send('Could not register user');
@@ -80,6 +80,7 @@ router.route('/login')
   });
 
 router.get('/logout', (req, res) => {
+  console.log(req);
   req.logout();
   res.sendStatus(200);
 });
