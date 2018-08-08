@@ -5,22 +5,16 @@ const LocalStrategy = require('passport-local');
 const User = require('../db/models/User');
 
 passport.serializeUser((user, done) => {
-  console.log('hi')
-  if (user === null) {
-    return done(null, false)
-  } else {
-    return done(null, {
-      id: user.id,
-      username: user.username
-    });
-  }
+  return done(null, {
+    id: user.id,
+    username: user.username
+  });
 });
 
 passport.deserializeUser((user, done) => {
-  console.log('deserializing');
   new User({ id: user.id }).fetch()
     .then(user => {
-      if(!user) {
+      if (!user) {
         return done(null, false);
       } else {
         user = user.toJSON();
