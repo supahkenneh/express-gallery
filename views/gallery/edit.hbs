@@ -1,6 +1,6 @@
 <h2>Edit a picture in the gallery</h2>
-<form id='editForm' action="/gallery/{{id}}/" method="POST" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="_method" value="PUT">
+<form id='editPhoto' action="/gallery/{{id}}/" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="PUT">
   <label for="author_username">Username:</label>
   <input type="text" id="author_username" name="author_username" placeholder="Author's username" value="{{author_username}}">
   <br>
@@ -8,17 +8,15 @@
   <input type="text" id="title" name="title" placeholder="Title of photo" value="{{title}}">
   <br>
   <label for="description">Description:</label>
-    <textarea form='newPhoto' id="decription" name='decription' placeholder="Description of photo" cols=80 rows=50>{{description}}</textarea>
+  <textarea form='editPhoto' id="description" name='description' placeholder="Description of photo" cols=80 rows=50>{{description}}</textarea>
   <br>
   <label for="link">Link:</label>
-  <input type="text" id = "link" name="link" placeholder="Link to photo" value="{{link}}">
+  <input type="text" id="link" name="link" placeholder="Link to photo" value="{{link}}">
   <br>
   <input type="submit" value="SUBMIT">
 </form>
 {{#if reason}}
 <h1 style='color:red'>{{reason.reason}}</h1>
-{{/if}}
-
-{{#each typeReasons}}
-  <h4 style='color:red'>Error: {{typeReason}}</h4>
+{{/if}} {{#each typeReasons}}
+<h4 style='color:red'>Error: {{typeReason}}</h4>
 {{/each}}

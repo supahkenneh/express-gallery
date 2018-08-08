@@ -17,7 +17,7 @@ router.route('/').get((req, res) => {
       return result.models;
     })
     .then(photos => {
-
+      console.log(req.body.description);
 
       return res.render('./index', { photos });
     })

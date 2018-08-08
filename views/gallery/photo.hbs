@@ -1,7 +1,6 @@
 <ol>
   {{#if title}}
   <ul>
-
     <div>
       <h3>{{title}}</h2>
         <h4>by {{author_username}} @ {{link}}</h3>
@@ -14,12 +13,18 @@
 
   </ul>
   {{else}}
-  <h3>There are currently no photos.</h3>
+  <h3>This photo doesn't exist</h3>
   {{/if}}
 </ol>
-{{!--
-<form action='/photos/new' method='get'>
-  <button type='submit'>Add a new photo</button>
-</form> --}} {{#each errors}}
+
+<form action='/gallery/{{id}}/edit' method='get'>
+  <button type='submit'>Edit photo</button>
+</form>
+
+<form action='/gallery/{{id}}' method='POST' enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="_method" value="DELETE">
+<button type='submit'>Delete photo</button>
+</form>
+{{#each errors}}
 <h3>{{message}}</h3>
 {{/each}} {{!-- {{>indexButtons}} --}}
