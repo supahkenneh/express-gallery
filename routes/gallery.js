@@ -18,8 +18,8 @@ router.route('/')
 
     return new Gallery({ author, link, description })
       .save()
-      .then(gallery => {
-        return res.json(gallery);
+      .then(photo => {
+        return res.redirect('/gallery')
       })
       .catch(err => {
         return res.json({ message: err.message });
