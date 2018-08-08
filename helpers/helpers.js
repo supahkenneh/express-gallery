@@ -1,5 +1,5 @@
+//authenticates user for every route past login
 function isAuthenticated(req, res, next) {
-  console.log('Authenticating');
   if (req.isAuthenticated()) {
     next();
   } else {

@@ -4,6 +4,8 @@ const helpers = require('../helpers/helpers');
 
 const Gallery = require('../db/models/Gallery');
 
+router.use(helpers.isAuthenticated);
+
 router.route('/')
   .post((req, res) => {
     let {
@@ -23,11 +25,11 @@ router.route('/')
         return res.json({ message: err.message });
       });
   })
-  .get(helpers.isAuthenticated, (req, res) => {
+  .get((req, res) => {
     return Gallery
       .fetchAll()
       .then(gallery => {
-        return res.render('index', { gallery: gallery.models });
+        return res.render('./gallerypages/index', { gallery: gallery.models });
       })
       .catch(err => {
         return res.json({ message: err.message });
@@ -36,7 +38,7 @@ router.route('/')
 
 router.route('/new')
   .get((req, res) => {
-    return res.render('new');
+    return res.render('./gallerypages/new');
   });
 
 router.route('/:id')
@@ -91,7 +93,7 @@ router.route('/:id/edit')
       .query({ where: { id } })
       .fetch()
       .then(photo => {
-        return res.render('edit', {
+        return res.render('./gallerypages/edit', {
           photo: photo.attributes,
         })
       })

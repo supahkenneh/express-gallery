@@ -49,7 +49,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 router.get('/', (req, res) => {
-  res.send('render regular page');
+  res.render('landingpage');
 });
 
 router.route('/register')
@@ -57,6 +57,7 @@ router.route('/register')
     res.render('../views/authpages/register');
   })
   .post((req, res) => {
+    console.log(req);
     return new User({
       username: req.body.username,
       password: req.body.password
@@ -66,6 +67,7 @@ router.route('/register')
         res.redirect('/login');
       })
       .catch(err => {
+        console.log(err);
         return res.send('Could not register user');
       });
   });
@@ -73,21 +75,15 @@ router.route('/register')
 router.route('/login')
   .post(passport.authenticate('local', {
     successRedirect: '/gallery',
-    failureRedirect: '/'
+    failureRedirect: '/login'
   }))
   .get((req, res) => {
     return res.render('../views/authpages/login');
   });
 
 router.get('/logout', (req, res) => {
-  console.log(req);
   req.logout();
-  res.sendStatus(200);
+  res.render('./authpages/logout')
 });
-
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { next(); }
-  else { res.redirect('/'); }
-};
 
 module.exports = router;
