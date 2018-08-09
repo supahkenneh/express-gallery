@@ -127,6 +127,10 @@ body {
 .card_desc, .description_div {
   border-bottom: #7C7E84 1px solid; }
 
+#side_messages {
+  margin-top: 25px;
+  color: red; }
+
 /*** new page ***/
 textarea {
   margin: 15px;
@@ -175,12 +179,13 @@ textarea {
   color: #7C7E84; }
 
 #delete_button {
-  margin-left: 880px;
   border: 1px solid black;
   font-family: "Roboto", Sans-Serif;
   padding: 10px;
-  padding-left: 33px;
-  padding-right: 33px; }
+  padding-left: 31px;
+  padding-right: 31px;
+  font-size: 17px;
+  background: transparent; }
 
 #desc_content {
   margin-top: 15px;
@@ -199,3 +204,8 @@ textarea {
   padding: 10px;
   padding-left: 35px;
   padding-right: 35px; }
+
+/*** pretty stuff ***/
+#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover {
+  background: black;
+  color: white; }

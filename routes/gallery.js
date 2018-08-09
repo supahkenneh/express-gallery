@@ -34,7 +34,8 @@ router.route('/')
         return res.render('./gallerypages/index', {
           firstpic: firstPic[0], 
           gallery: remainingPics, 
-          username: req.user.username
+          username: req.user.username,
+          message: req.flash('msg3')
         });
       })
       .catch(err => {
@@ -54,6 +55,10 @@ router.route('/:id')
       .query({ where: { id } })
       .fetchAll()
       .then(photo => {
+        if (!photo.models[0]) {
+          req.flash('msg3', `image doesn't exist`)
+          return res.redirect('/gallery');
+        }
         return res.render('./gallerypages/photo', { 
           photo: photo.models[0]
         });

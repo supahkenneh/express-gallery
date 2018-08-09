@@ -3,6 +3,12 @@
     <a href="http://localhost:3005/gallery" id="id_back"> Back </a>
   </div>
   <br>
+  <div id="delete_container">
+    <form action="/gallery/{{photo.attributes.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="delete" id="delete_button">
+    </form>
+  </div>
   <div id="logout">
     <a href="http://localhost:3005/logout" id="logout_button">logout</a>
   </div>
@@ -13,15 +19,9 @@
 <div id="photo">
   <img src="{{photo.attributes.link}}" alt="image" height="733" width="1100">
 </div>
-{{!-- <div id="delete"> --}}
-
-{{!-- </div> --}}
 <div id="photo_content">
   <div id="author">Author: {{photo.attributes.author}}</div>
-    <form action="/gallery/{{photo.attributes.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="_method" value="DELETE"> 
-    <input type="submit" value="delete" id="delete_button">
-  </form>
+
 </div>
 <div id="desc_content">
   <div id="description">{{photo.attributes.description}}</div>
