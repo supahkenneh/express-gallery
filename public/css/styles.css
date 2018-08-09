@@ -173,3 +173,13 @@ textarea {
 #id_back {
   padding-left: 37px;
   padding-right: 37px; }
+
+/*** logout page ***/
+#landing_page {
+  font-family: "Roboto", Sans-Serif;
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  padding-left: 35px;
+  padding-right: 35px; }
