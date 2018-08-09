@@ -1,29 +1,29 @@
-<ol>
-  {{#if title}}
-  <ul>
-    <div>
-      <h3>{{title}}</h2>
-        <h4>by {{author_username}} @ {{link}}</h3>
-    </div>
-    <img src="{{link}}" height="320" width="540">
-    </div>
-    <div>
-      <p>{{description}}</p>
-    </div>
+ {{#if title}}
 
-  </ul>
-  {{else}}
-  <h3>This photo doesn't exist</h3>
-  {{/if}}
-</ol>
+<div class="photo_card">
+  <div class="photo_info">
+    <p>{{title}} - {{link}}</p>
+  </div>
+  <div class="photo_photo">
+    <img src="{{link}}">
+  </div>
+  <div class="photo_desc">
+    <p>{{description}}</p>
+  </div>
+</div>
+
+{{else}}
+<h3>This photo doesn't exist</h3>
+{{/if}}
+
 
 <form action='/gallery/{{id}}/edit' method='get'>
   <button type='submit'>Edit photo</button>
 </form>
 
 <form action='/gallery/{{id}}' method='POST' enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="_method" value="DELETE">
-<button type='submit'>Delete photo</button>
+  <input type="hidden" name="_method" value="DELETE">
+  <button type='submit'>Delete photo</button>
 </form>
 {{#each errors}}
 <h3>{{message}}</h3>

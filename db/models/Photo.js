@@ -9,6 +9,10 @@ class Photo extends bookshelf.Model {
   get hasTimestamps() {
     return true;
   }
+  
+  author() {
+    return this.belongsTo('User','author_username');
+  }
 }
 
 module.exports = bookshelf.model('Photo', Photo);

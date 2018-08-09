@@ -1,29 +1,35 @@
-<ol>
-  {{#if photos}} {{#each photos}}
-
-  <ul>
-
-    <div>
-      <h3>{{this.attributes.title}}</h2>
-        <h4>by {{this.attributes.author_username}} @ {{this.attributes.link}}</h3>
-    </div>
+ {{#if photos}} {{#each photos}} {{#if @first}}
+<div class="first_photo">
+  <div class="photo_photo">
     <a href="/gallery/{{this.attributes.id}}">
-      <img src="{{this.attributes.link}}" height="240" width="320">
+      <img src="{{this.attributes.link}}">
     </a>
-    </div>
-    <div>
-
-      <p>{{this.attributes.description}}</p>
-    </div>
-
-  </ul>
-  {{/each}} {{else}}
-  <h3>There are currently no photos.</h3>
-  {{/if}}
-</ol>
-{{!--
+    <hr>
+  </div>
+</div>
+{{else}}
+<div class="photo_card">
+  <div class="photo_photo">
+    <a href="/gallery/{{this.attributes.id}}">
+      <img src="{{this.attributes.link}}">
+    </a>
+  </div>
+  <div class="photo_info">
+    <p>{{this.attributes.title}} - {{this.attributes.link}}</p>
+  </div>
+</div>
+{{/if}} {{/each}} {{else}}
+<h3>There are currently no photos.</h3>
+{{/if}} {{!--
 <form action='/photos/new' method='get'>
   <button type='submit'>Add a new photo</button>
 </form> --}} {{#each errors}}
 <h3>{{message}}</h3>
-{{/each}} {{!-- {{>indexButtons}} --}}
+{{/each}} {{!-- {{>indexButtons}} --}} {{!--
+<div class="photo_info">
+  <h3>{{this.attributes.title}}</h3>
+  <h4>by {{this.attributes.author_username}} @ {{this.attributes.link}}</h4>
+</div> --}} {{!--
+<div class="photo_desc">
+  <p>{{this.attributes.description}}</p>
+</div> --}}
