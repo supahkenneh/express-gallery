@@ -109,9 +109,10 @@ body {
 
 #username {
   border-bottom: 1px solid lightgray;
-  padding: 10px; }
+  padding: 10px;
+  margin-bottom: 40px; }
 
-#new_pic, #logout {
+#logout {
   margin-top: 20px; }
 
 #logout_button, #post_button, #id_back {

@@ -40,7 +40,6 @@ app.use('/', auth);
 app.use('/users', user);
 app.use('/gallery', gallery);
 
-
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs'
