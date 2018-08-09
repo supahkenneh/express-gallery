@@ -63,6 +63,17 @@ body {
   font-size: 14px;
 }
 
+#register_back {
+  font-family: $headerFont;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
 /*** registration & login pages ***/
 #normal_header {
   font-family: $headerFont;
@@ -247,7 +258,7 @@ textarea {
 }
 
 /*** pretty stuff ***/
-#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover {
+#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover {
   background: black;
   color: white;
 }

@@ -1,4 +1,5 @@
 <h1 id="normal_header">Add To Gallery</h1>
+<div id="messages">{{message}}</div>
 <form action="/gallery" enctype="application/x-www-form-urlencoded" method="POST">
   <h1 class="header_input">Author:
     <br>
@@ -6,7 +7,7 @@
   </h1>
   <h1 class="header_input">Link:
     <br>
-    <input type="text" name="link" class="simple_line" value="{{photo.link}}">
+    <input type="url" name="link" class="simple_line" value="{{photo.link}}">
   </h1>
   <h1 class="header_input">Description:
     <br>

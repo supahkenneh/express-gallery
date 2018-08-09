@@ -15,7 +15,10 @@ router.route('/')
     } = req.body;
     author = author.trim();
     link = link.trim().toLowerCase();
-
+    if (author.length < 1) {
+      req.flash('msg4', 'author name required')
+      return res.redirect('/gallery/new')
+    }
     return new Gallery({ author, link, description })
       .save()
       .then(photo => {
@@ -45,7 +48,9 @@ router.route('/')
 
 router.route('/new')
   .get((req, res) => {
-    return res.render('./gallerypages/new');
+    return res.render('./gallerypages/new', {
+      message: req.flash('msg4')
+    });
   });
 
 router.route('/:id')
