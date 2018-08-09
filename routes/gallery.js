@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const isAuthenticated = require('../helper/authenticated');
 const Photo = require('../db/models/Photo');
 
-router.route('/').post((req, res) => {
-  console.log(req.body);
+router.route('/').post(isAuthenticated,(req, res) => {
   let { author_username, link, description, title } = req.body;
   if (!(author_username.length && link.length && description.length && title.length)) {
     res.app.locals.error = { reason: 'You need to fill in all the fields' };
@@ -18,19 +18,24 @@ router.route('/').post((req, res) => {
     link,
     description
   })
-    .save()
+    .save([require=true])
     .then(photo => {
+      if(!photo){
+        throw new Error('User not found');
+      }
       return res.redirect('/');
     })
     .catch(err => {
-      // res.app.locals.error = err;
       res.app.locals.body = req.body;
       res.redirect('/gallery/new');
     });
 });
 
 router.route('/new').get((req, res) => {
-  res.render('./gallery/new', { reason: res.app.locals.error, ...res.app.locals.body });
+  let renderParams = {reason: res.app.locals.error, ...res.app.locals.body};
+  res.app.locals.error = '';
+  res.app.locals.body = '';
+  res.render('./gallery/new', renderParams);
 });
 
 router.route('/:id/edit').get((req, res) => {

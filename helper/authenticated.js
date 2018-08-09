@@ -5,6 +5,7 @@ function isAuthenticated(req, res, next) {
     console.log('AUTHENTICATED!!!!!!!!!');
     next();
   } else {
+    res.app.locals.error = {message : 'Please sign in'};
     res.redirect('/login');
   }
 }

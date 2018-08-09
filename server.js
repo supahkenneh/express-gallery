@@ -77,11 +77,8 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new LocalStrategy(function(username, password, done) {
     return new User({ username: username })
-      .fetch()
+      .fetch({ require: true })
       .then(user => {
-        if (!user) {
-          throw new Error('User not logged in ');
-        }
         user = user.toJSON();
         console.log(user);
         if (user === null) {
@@ -112,12 +109,12 @@ app.get('/register', (req, res) => {
 
 app.post('/register', (req, res) => {
   bcrypt.genSalt(saltedRounds, (err, salt) => {
-    if(err){
+    if (err) {
       return res.status(500);
     }
     bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
       console.log('Hashed password:', hashedPassword);
-      if(err){
+      if (err) {
         return res.status(500);
       }
       return new User({
@@ -135,27 +132,13 @@ app.post('/register', (req, res) => {
           console.log(err);
           return res.send('Could not register you');
         });
-
-
-    })
-  })
-
+    });
+  });
 });
 
-app.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/secret',
-    failureRedirect: '/'
-  })
-);
-app.get(
-  './users/login',
-  passport.authenticate('local', {
-    successRedirect: '/secret',
-    failureRedirect: '/'
-  })
-);
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log(req.originalUrl);
+});
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -170,7 +153,7 @@ app.get('/secret', isAuthenticated, (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('./users/login');
+  res.render('./users/login', res.app.locals.error);
 });
 
 app.use('/', routes);
