@@ -197,6 +197,10 @@ textarea {
   justify-content: flex-start;
 }
 
+#photo_content {
+  margin-top: 10px;
+}
+
 #photo_content, #desc_content {
   display: flex;
   justify-content: flex-start;
@@ -204,6 +208,15 @@ textarea {
   font-family: $headerFont;
   font-size: 18px;
   color: $textColor;
+}
+
+#delete_button {
+  margin-left: 880px;
+  border: 1px solid black;
+  font-family: $headerFont;
+  padding: 10px;
+  padding-left: 33px;
+  padding-right: 33px;
 }
 
 #desc_content {

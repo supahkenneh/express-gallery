@@ -73,13 +73,14 @@ router.route('/register')
         })
           .save()
           .then(user => {
-            req.flash('msg1', 'successfully registered, please login')
+            req.flash('msg1', 'successfully registered, please login');
             res.redirect('/login');
           })
           .catch(err => {
             console.log(err);
+            req.flash('msg2', 'username already exists');
             return res.render('../views/authpages/register', {
-              message: 'username already exists'
+              message: req.flash('msg2')
             });
           });
       })

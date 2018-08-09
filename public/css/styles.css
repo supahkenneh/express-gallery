@@ -163,6 +163,9 @@ textarea {
   display: flex;
   justify-content: flex-start; }
 
+#photo_content {
+  margin-top: 10px; }
+
 #photo_content, #desc_content {
   display: flex;
   justify-content: flex-start;
@@ -170,6 +173,14 @@ textarea {
   font-family: "Roboto", Sans-Serif;
   font-size: 18px;
   color: #7C7E84; }
+
+#delete_button {
+  margin-left: 880px;
+  border: 1px solid black;
+  font-family: "Roboto", Sans-Serif;
+  padding: 10px;
+  padding-left: 33px;
+  padding-right: 33px; }
 
 #desc_content {
   margin-top: 15px;
