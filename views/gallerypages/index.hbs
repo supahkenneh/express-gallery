@@ -6,20 +6,21 @@
   </div>
   <br>
   <div id="pictures">
-    <div class="author_div">{{firstpic.attributes.author}}</div>
     <div class="image_div">
       <a href="http://localhost:3005/gallery/{{firstpic.id}}">
-        <img src="{{firstpic.attributes.link}}" alt="image" height="533" width="800">
+        <img src="{{firstpic.attributes.link}}" alt="image" height="800" width="1200">
       </a>
     </div>
+    <div class="author_div">{{firstpic.attributes.author}}</div>
+    <div class="description_div">{{firstpic.attributes.description}}</div>
     <div id="picture_grid">
       {{#each gallery}}
-      <div class="author_div">{{this.attributes.author}}</div>
       <div id="image_div">
         <a href="http://localhost:3005/gallery/{{this.id}}">
           <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
         </a>
       </div>
+      <div class="author_div">{{this.attributes.author}}</div>
       <div id="description_div">{{this.attributes.description}}</div>
       {{/each}}
     </div>
