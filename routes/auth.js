@@ -5,8 +5,6 @@ const LocalStrategy = require('passport-local');
 const User = require('../db/models/User');
 const bcrypt = require('bcrypt');
 const saltedRounds = 12;
-const helpers = require('../helpers/helpers');
-
 
 passport.serializeUser((user, done) => {
   return done(null, {
@@ -62,13 +60,26 @@ router.get('/', (req, res) => {
 router.route('/register')
   .get((req, res) => {
     res.render('../views/authpages/register', {
-      message: req.flash('msg5')
+      message: req.flash('registerError'),
+      username: req.flash('username'),
+      name: req.flash('name'),
+      email: req.flash('email')
     });
   })
   .post((req, res) => {
-    let username = req.body.username;
+    let {
+      username,
+      name,
+      email
+     } = req.body;
+     req.flash('username', username);
+     req.flash('name', name);
+     req.flash('email', email);
     if (username.length < 1) {
-      req.flash('msg5', 'username required for registration')
+      req.flash('registerError', 'username required for registration')
+      return res.redirect('/register');
+    } else if (req.body.password.length < 1 ) {
+      req.flash('registerError', 'password required for registration');
       return res.redirect('/register');
     }
     bcrypt.genSalt(saltedRounds, (err, salt) => {

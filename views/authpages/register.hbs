@@ -4,7 +4,7 @@
   <form action="/register" enctype="application/x-www-form-urlencoded" method="POST">
     <h1 class="header_input">Username:
       <br>
-      <input type="text" name="username" class="simple_line">
+      <input type="text" name="username" class="simple_line" value="{{username}}">
     </h1>
     <h1 class="header_input"> Password:
       <br>
@@ -12,11 +12,11 @@
     </h1>
     <h1 class="header_input"> Name:
       <br>
-      <input type="text" name="name" class="simple_line">
+      <input type="text" name="name" class="simple_line" value="{{name}}">
     </h1>
     <h1 class="header_input"> Email:
       <br>
-      <input type="text" name="email" class="simple_line">
+      <input type="text" name="email" class="simple_line" value="{{email}}">
     </h1>
     <input type="submit" value="register" id="register_button">
   </form>
