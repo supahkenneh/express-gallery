@@ -3,7 +3,6 @@ $contentFont: 'Droid Serif', Sans-Serif;
 $textColor: #7C7E84;
 
 body {
-  // background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/stripes-light.png");
   background-color: whitesmoke;
   margin: 0;
   text-align: center;
@@ -95,6 +94,7 @@ body {
   margin-top: 100px;
   font-family: $headerFont;
   font-size: 18px;
+  color: $textColor;
 }
 
 #secondary_header {
@@ -135,9 +135,18 @@ body {
 }
 
 .cards {
-  margin-top: 10px;
+  margin-top: 25px;
   height: 400px;
   width: 525px;
+  margin: 10px;
+}
+
+.description_div {
+  margin-bottom: 20px;
+}
+
+.card_desc, .description_div {
+  border-bottom: #7C7E84 1px solid;
 }
 
 /*** new page ***/

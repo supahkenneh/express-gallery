@@ -76,7 +76,8 @@ body {
 #gallery_body {
   margin-top: 100px;
   font-family: "Roboto", Sans-Serif;
-  font-size: 18px; }
+  font-size: 18px;
+  color: #7C7E84; }
 
 #secondary_header {
   position: fixed;
@@ -110,9 +111,16 @@ body {
   justify-content: center; }
 
 .cards {
-  margin-top: 10px;
+  margin-top: 25px;
   height: 400px;
-  width: 525px; }
+  width: 525px;
+  margin: 10px; }
+
+.description_div {
+  margin-bottom: 20px; }
+
+.card_desc, .description_div {
+  border-bottom: #7C7E84 1px solid; }
 
 /*** new page ***/
 textarea {
