@@ -8,5 +8,6 @@
   <br>
   <input type="submit" value="SUBMIT">
 </form>
-
-<div><h2>{{reason}}</h2></div>
+{{#each reasons}}
+<div><h2 style='color:red'>{{message}} {{username}} {{password}}</h2></div>
+{{/each}}

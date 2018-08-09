@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars');
 const hiddenMethodParser = require('./helper/hiddenMethodParser');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const flash = require('connect-flash');
 
 const saltedRounds = 12;
 
@@ -35,6 +36,8 @@ app.use(
     saveUninitialized: true
   })
 );
+
+app.use(flash());
 
 app.engine(
   '.hbs',
@@ -136,8 +139,39 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log(req.originalUrl);
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    // console.log('ERROR:', err);
+    // console.log('USER:', user);
+    // console.log('INFO:', info);
+    // console.log('username: ', req.body.username);
+    // console.log('password: ', req.body.password);
+
+    if (err) {
+      req.flash('error', {message:'Incorrect username or password'});
+      req.flash('username', req.body.username);
+      // console.log(err);
+      return res.status(404).redirect('/login');
+    }
+
+    if (!user) {
+      if (!req.body.username.length) {
+        req.flash('error', { username: 'Fill in the username' });
+      }
+      if (!req.body.password.length) {
+        req.flash('error', { password: 'Fill in the password' });
+      }
+      req.flash('username', req.body.username);
+      return res.status(400).redirect('/login');
+    }
+
+    req.login(user, err => {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect('/');
+    });
+  })(req, res, next);
 });
 
 app.get('/logout', (req, res) => {
@@ -153,7 +187,10 @@ app.get('/secret', isAuthenticated, (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('./users/login', res.app.locals.error);
+  res.render('./users/login', {
+    reasons: req.flash('error'),
+    username: req.flash('username')
+  });
 });
 
 app.use('/', routes);

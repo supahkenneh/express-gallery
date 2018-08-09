@@ -1,23 +1,21 @@
 <h2>Add a picture to the gallery!</h2>
+<h3>Author: {{author_username}}</h3>
 <form id="newPhoto" action="/gallery" method="POST">
-  <label for="author_username">Username:</label>
-  <input type="text" id="author_username" name="author_username" placeholder="Author's username" value="{{author_username}}">
+
   <br>
   <label for="title">Title:</label>
   <input type="text" id="title" name="title" placeholder="Title of photo" value="{{title}}">
   <br>
   <label for="description">Description:</label>
-    <textarea form='newPhoto' id="description" name='description' placeholder="Description of photo" cols=80 rows=50>{{description}}</textarea>
+  <textarea form='newPhoto' id="description" name='description' placeholder="Description of photo" cols=80 rows=50>{{description}}</textarea>
   <br>
   <label for="link">Link:</label>
-  <input type="text" id = "link" name="link" placeholder="Link to photo" value="{{link}}">
+  <input type="text" id="link" name="link" placeholder="Link to photo" value="{{link}}">
   <br>
   <input type="submit" value="SUBMIT">
 </form>
 {{#if reason}}
 <h1 style='color:red'>{{reason.reason}}</h1>
-{{/if}}
-
-{{#each typeReasons}}
-  <h4 style='color:red'>Error: {{typeReason}}</h4>
+{{/if}} {{#each typeReasons}}
+<h4 style='color:red'>Error: {{typeReason}}</h4>
 {{/each}}

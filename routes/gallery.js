@@ -3,7 +3,10 @@ const router = express.Router();
 const isAuthenticated = require('../helper/authenticated');
 const Photo = require('../db/models/Photo');
 
-router.route('/').post(isAuthenticated,(req, res) => {
+router.route('/').post(isAuthenticated, (req, res) => {
+  if (!(req.user.username === req.body.author_username)) {
+    return res.status(401).send('UNAUTHORIZED');
+  }
   let { author_username, link, description, title } = req.body;
   if (!(author_username.length && link.length && description.length && title.length)) {
     res.app.locals.error = { reason: 'You need to fill in all the fields' };
@@ -18,11 +21,8 @@ router.route('/').post(isAuthenticated,(req, res) => {
     link,
     description
   })
-    .save([require=true])
-    .then(photo => {
-      if(!photo){
-        throw new Error('User not found');
-      }
+    .save({ require: true })
+    .then(() => {
       return res.redirect('/');
     })
     .catch(err => {
@@ -31,26 +31,25 @@ router.route('/').post(isAuthenticated,(req, res) => {
     });
 });
 
-router.route('/new').get((req, res) => {
-  let renderParams = {reason: res.app.locals.error, ...res.app.locals.body};
+router.route('/new').get(isAuthenticated, (req, res) => {
+  let renderParams = {
+    author_username: req.user.username,
+    reason: res.app.locals.error,
+    ...res.app.locals.body
+  };
   res.app.locals.error = '';
   res.app.locals.body = '';
   res.render('./gallery/new', renderParams);
 });
 
-router.route('/:id/edit').get((req, res) => {
+router.route('/:id/edit').get(isAuthenticated, (req, res) => {
   return Photo.where('id', req.params.id)
-    .fetch([{ require: true }])
-    .then(result => {
-      console.log(result);
-      if (!result) {
-        throw new Error('This photo doesnt exist.');
-      }
-      return result.attributes;
-    })
+    .fetch({ require: true })
     .then(photo => {
-      console.log('end', photo);
-      res.render('./gallery/edit', photo);
+      if (!(req.user.username === photo.attributes.author_username)) {
+        return res.status(401).send('UNAUTHORIZED');
+      }
+      return res.render('./gallery/edit', photo.attributes);
     })
     .catch(err => {
       console.log(err);
@@ -80,7 +79,10 @@ router
         return res.render('./gallery/photo', { errors: err.message });
       });
   })
-  .put((req, res) => {
+  .put(isAuthenticated, (req, res) => {
+    if (!(req.user.username === req.body.author_username)) {
+      return res.status(401).send('UNAUTHORIZED-POST');
+    }
     let { author_username, link, description, title } = req.body;
     console.log(req.body);
     return new Photo({ id: req.params.id })
@@ -101,7 +103,10 @@ router
         console.log(err.message);
       });
   })
-  .delete((req, res) => {
+  .delete(isAuthenticated, (req, res) => {
+    if (!(req.user.username === req.body.author_username)) {
+      return res.status(401).send('UNAUTHORIZED');
+    }
     return new Photo({ id: req.params.id })
       .destroy()
       .then(result => {
