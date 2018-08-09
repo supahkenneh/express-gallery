@@ -14,7 +14,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  // console.log('deserialize, ', user)
   new User({ id: user.id }).fetch()
     .then(user => {
       if (!user) {
