@@ -95,16 +95,31 @@ router.route('/register')
     })
   });
 
-router.route('/login')
-  .post(passport.authenticate('local', {
-    successRedirect: '/gallery',
-    failureRedirect: '/login'
-  }))
-  .get((req, res) => {
-    return res.render('../views/authpages/login', {
-      message: req.flash('msg1')
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      req.flash('error', `wrong username or password`);
+      return res.redirect('/login')
+    }
+    if (!user) {
+      if (req.body.username.length < 1 || req.body.password.length < 1) {
+        req.flash('error', `wrong username or password`);
+        return res.redirect('/login')
+      }
+    }
+    req.login(user, (err) => {
+      if (err) { return next(err); }
+      return res.redirect('/gallery');
     });
+  })(req, res, next);
+});
+
+
+router.get('/login', (req, res) => {
+  return res.render('../views/authpages/login', {
+    message: req.flash('error')
   });
+});
 
 router.get('/logout', (req, res) => {
   req.logout();
