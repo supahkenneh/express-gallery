@@ -8,6 +8,7 @@ router.use(helpers.isAuthenticated);
 
 router.route('/')
   .post((req, res) => {
+    console.log(req.body);
     let {
       title,
       author,
@@ -20,7 +21,7 @@ router.route('/')
       req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
-    return new Gallery({ title, author, link, description })
+    return new Gallery({ title, link, description })
       .save()
       .then(photo => {
         return res.redirect('/gallery')

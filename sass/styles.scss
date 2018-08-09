@@ -109,6 +109,7 @@ body {
   border: 1px solid;
   font-size: 16px;
   font-family: $headerFont;
+  background: transparent;
 }
 
 /*** gallery page ***/
@@ -142,6 +143,7 @@ body {
   color: black;
   border: solid 1px;
   padding: 10px;
+  background: transparent;
 }
 
 #logout_button {
