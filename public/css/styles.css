@@ -77,20 +77,37 @@ body {
   font-family: "Roboto", Sans-Serif;
   font-size: 18px; }
 
-#username {
-  float: right; }
+#secondary_header {
+  position: fixed;
+  right: 50px;
+  display: flex;
+  flex-direction: column; }
 
-#logout {
-  float: right;
+#username {
+  border-bottom: 1px solid lightgray;
+  padding: 10px; }
+
+#new_pic, #logout {
   margin-top: 20px; }
 
-#logout_button {
+#logout_button, #post_button {
   text-decoration: none;
   font-family: "Roboto", Sans-Serif;
   color: black;
   border: solid 1px;
   padding: 10px; }
 
-#image_div {
+#logout_button {
+  padding-left: 38px;
+  padding-right: 38px; }
+
+#picture_grid {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center; }
+
+.cards {
+  margin-top: 10px;
+  height: 400px;
+  width: 525px; }

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const helpers = require('../helpers/helpers');
 
+const helpers = require('../helpers/helpers');
 const Gallery = require('../db/models/Gallery');
 
 router.use(helpers.isAuthenticated);
