@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Jesus-Eder-Gonzalez/express-gallery#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "bookshelf": "^0.13.3",
     "connect-redis": "^3.3.3",
     "express": "^4.16.3",
