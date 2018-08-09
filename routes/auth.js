@@ -73,11 +73,14 @@ router.route('/register')
         })
           .save()
           .then(user => {
+            req.flash('msg1', 'successfully registered, please login')
             res.redirect('/login');
           })
           .catch(err => {
             console.log(err);
-            return res.send('Could not register user');
+            return res.render('../views/authpages/register', {
+              message: 'username already exists'
+            });
           });
       })
     })
@@ -89,7 +92,9 @@ router.route('/login')
     failureRedirect: '/login'
   }))
   .get((req, res) => {
-    return res.render('../views/authpages/login');
+    return res.render('../views/authpages/login', {
+      message: req.flash('msg1')
+    });
   });
 
 router.get('/logout', (req, res) => {

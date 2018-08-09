@@ -57,6 +57,12 @@ body {
   padding: 15px;
 }
 
+#messages {
+  color: red;
+  font-family: $contentFont;
+  font-size: 14px;
+}
+
 /*** registration & login pages ***/
 #normal_header {
   font-family: $headerFont;

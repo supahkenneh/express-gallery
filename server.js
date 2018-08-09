@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
 const PORT = process.env.port || 3005;
 const User = require('./db/models/User');
 const auth = require('./routes/auth');
@@ -22,6 +23,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(flash());
 
 app.use(methodOverride((req, res) => {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {

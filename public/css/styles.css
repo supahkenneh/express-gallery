@@ -45,6 +45,11 @@ body {
   border: solid black 1px;
   padding: 15px; }
 
+#messages {
+  color: red;
+  font-family: "Droid Serif", Sans-Serif;
+  font-size: 14px; }
+
 /*** registration & login pages ***/
 #normal_header {
   font-family: "Roboto", Sans-Serif;
