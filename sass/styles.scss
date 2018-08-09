@@ -79,9 +79,10 @@ body {
   height: 22px;
   width: 200px;
   font-size: 20px;
+  margin: 10px;
 }
 
-#register_button, #login_button { 
+#register_button, #login_button, #post_button { 
   height: 40px;
   width: 150px;
   border: 1px solid;
@@ -121,8 +122,8 @@ body {
 }
 
 #logout_button {
-  padding-left: 38px;
-  padding-right: 38px;
+  padding-left: 33px;
+  padding-right: 33px;
 }
 
 #picture_grid {
@@ -136,4 +137,12 @@ body {
   margin-top: 10px;
   height: 400px;
   width: 525px;
+}
+
+/*** new page ***/
+textarea {
+  margin: 15px;
+  height: 100px;
+  width: 300px;
+  font-size: 18px;
 }
