@@ -111,12 +111,12 @@ router.post('/login', (req, res, next) => {
     if (err) {
       req.flash('error', `wrong username or password`);
       return res.redirect('/login')
-    }
-    if (!user) {
-      if (req.body.username.length < 1 || req.body.password.length < 1) {
+    } else if (!user) {
         req.flash('error', `wrong username or password`);
         return res.redirect('/login')
-      }
+    } else if (req.body.username < 1 || req.body.password.length < 1) {
+      req.flash('error', `wrong username or password`);
+      return res.redirect('/login')
     }
     req.login(user, (err) => {
       if (err) { return next(err); }
