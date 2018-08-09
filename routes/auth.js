@@ -9,11 +9,12 @@ const saltedRounds = 12;
 passport.serializeUser((user, done) => {
   return done(null, {
     id: user.id,
-    username: user.username
+    username: user.username.toLowerCase()
   });
 });
 
 passport.deserializeUser((user, done) => {
+  // console.log('deserialize, ', user)
   new User({ id: user.id }).fetch()
     .then(user => {
       if (!user) {
@@ -22,7 +23,7 @@ passport.deserializeUser((user, done) => {
         user = user.toJSON();
         return done(null, {
           id: user.id,
-          username: user.username
+          username: user.username.toLowerCase()
         });
       }
     })
@@ -107,6 +108,7 @@ router.route('/register')
   });
 
 router.post('/login', (req, res, next) => {
+  req.body.username = req.body.username.toLowerCase();
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       req.flash('error', `wrong username or password`);
