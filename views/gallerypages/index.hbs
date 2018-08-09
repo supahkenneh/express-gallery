@@ -1,12 +1,13 @@
+<div id="username">logged in as: {{username}}</div>
 <div id="logout">
   <a href="http://localhost:3005/logout">Logout</a>
 </div>
 {{#each gallery}}
-<div>{{this.attributes.author}}</div>
-<div>
+<div id="author_div">{{this.attributes.author}}</div>
+<div id="image_div">
   <a href="http://localhost:3005/gallery/{{this.id}}">
     <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
   </a>
 </div>
-<div>{{this.attributes.description}}</div>
+<div id="description_div">{{this.attributes.description}}</div>
 {{/each}}

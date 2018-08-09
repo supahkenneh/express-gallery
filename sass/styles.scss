@@ -1,33 +1,92 @@
 $headerFont: 'Roboto', Sans-Serif;
 $contentFont: 'Droid Serif', Sans-Serif;
+$textColor: #7C7E84;
 
 body {
   // background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/stripes-light.png");
   background-color: whitesmoke;
   margin: 0;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#header_line {
+  margin-top: 50px;
+  height: 75px;
+  width: 100%;
+  border-top: dotted lightgray 2px;
   display: flex;
-  justify-content: center;
 }
 
 #main_header {
   font-family: $headerFont;
   font-size: 82px;
-  color: #7C7E84;
-  margin-right: 600px;
-  margin-top: 68px;
+  color: $textColor;
+  margin-top: 15px;
+  margin-left: 150px;
 }
 
-#header_line {
-  position: fixed;
-  top: 12%;
-  width: 100%;
-  border-bottom: dotted lightgray 2px;
+
+#welcome {
+  margin-top: 10px;
+  margin-left: 250px;
+  border-left: solid lightgray 2px;
+  height: 75px;
+  padding: 20px;
 }
 
-#header_divide {
-  position: fixed;
-  top: 16%;
-  height: 90px;
-  border-right: dotted lightgray 2px;
-  margin-left: 50px;
+#message {
+  text-align: center;
+  color: $textColor;
+  font-family: $headerFont;
+  margin: 10px;
+  font-size: 18px;
 }
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 150px;
+}
+
+.user_buttons {
+  text-decoration: none;
+  font-family: $headerFont;
+  color: black;
+  border: solid black 1px;
+  padding: 15px;
+}
+
+/*** registration page ***/
+#normal_header {
+  font-family: $headerFont;
+  color: $textColor;
+  margin-top: 100px;
+}
+
+#form_body {
+  margin: 20px;
+}
+
+.header_input {
+  font-family: $headerFont;
+  color: $textColor;
+  font-size: 24px;
+}
+
+.simple_line {
+  height: 22px;
+  width: 200px;
+  font-size: 20px;
+}
+
+#register_button, #login_button { 
+  height: 40px;
+  width: 150px;
+  border: 1px solid;
+  font-size: 16px;
+  font-family: $headerFont;
+}
+
+

@@ -1,25 +1,72 @@
 body {
   background-color: whitesmoke;
   margin: 0;
-  display: flex;
-  justify-content: center; }
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px; }
+
+#header_line {
+  margin-top: 50px;
+  height: 75px;
+  width: 100%;
+  border-top: dotted lightgray 2px;
+  display: flex; }
 
 #main_header {
   font-family: "Roboto", Sans-Serif;
   font-size: 82px;
   color: #7C7E84;
-  margin-right: 600px;
-  margin-top: 68px; }
+  margin-top: 15px;
+  margin-left: 150px; }
 
-#header_line {
-  position: fixed;
-  top: 12%;
-  width: 100%;
-  border-bottom: dotted lightgray 2px; }
+#welcome {
+  margin-top: 10px;
+  margin-left: 250px;
+  border-left: solid lightgray 2px;
+  height: 75px;
+  padding: 20px; }
 
-#header_divide {
-  position: fixed;
-  top: 16%;
-  height: 90px;
-  border-right: dotted lightgray 2px;
-  margin-left: 50px; }
+#message {
+  text-align: center;
+  color: #7C7E84;
+  font-family: "Roboto", Sans-Serif;
+  margin: 10px;
+  font-size: 18px; }
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 150px; }
+
+.user_buttons {
+  text-decoration: none;
+  font-family: "Roboto", Sans-Serif;
+  color: black;
+  border: solid black 1px;
+  padding: 15px; }
+
+/*** registration page ***/
+#normal_header {
+  font-family: "Roboto", Sans-Serif;
+  color: #7C7E84;
+  margin-top: 100px; }
+
+#form_body {
+  margin: 20px; }
+
+.header_input {
+  font-family: "Roboto", Sans-Serif;
+  color: #7C7E84;
+  font-size: 24px; }
+
+.simple_line {
+  height: 22px;
+  width: 200px;
+  font-size: 20px; }
+
+#register_button, #login_button {
+  height: 40px;
+  width: 150px;
+  border: 1px solid;
+  font-size: 16px;
+  font-family: "Roboto", Sans-Serif; }

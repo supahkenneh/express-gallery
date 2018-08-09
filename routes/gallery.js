@@ -29,7 +29,11 @@ router.route('/')
     return Gallery
       .fetchAll()
       .then(gallery => {
-        return res.render('./gallerypages/index', { gallery: gallery.models });
+        console.log(gallery);
+        return res.render('./gallerypages/index', { 
+          gallery: gallery.models, 
+          username: req.user.username
+        });
       })
       .catch(err => {
         return res.json({ message: err.message });
