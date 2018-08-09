@@ -102,6 +102,7 @@ body {
   right: 50px;
   display: flex;
   flex-direction: column;
+  font-family: $headerFont;
 }
 
 #username {
@@ -113,7 +114,7 @@ body {
   margin-top: 20px;
 }
 
-#logout_button, #post_button {
+#logout_button, #post_button, #id_back {
   text-decoration: none;
   font-family: $headerFont;
   color: black;
@@ -160,4 +161,42 @@ textarea {
   padding: 10px;
   padding-left: 58px;
   padding-right: 53px;
+}
+
+/*** Photo ID Page ***/
+#header_container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#photo_header {
+  font-family: $headerFont;
+  margin-left: 50px;
+  margin-top: 100px;
+  color: $textColor;
+}
+
+#photo {
+  margin-left: 50px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#photo_content, #desc_content {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 50px;
+  font-family: $headerFont;
+  font-size: 18px;
+  color: $textColor;
+}
+
+#desc_content {
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+#id_back {
+  padding-left: 37px;
+  padding-right: 37px;
 }

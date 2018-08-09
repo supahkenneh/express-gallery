@@ -82,7 +82,8 @@ body {
   position: fixed;
   right: 50px;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  font-family: "Roboto", Sans-Serif; }
 
 #username {
   border-bottom: 1px solid lightgray;
@@ -91,7 +92,7 @@ body {
 #new_pic, #logout {
   margin-top: 20px; }
 
-#logout_button, #post_button {
+#logout_button, #post_button, #id_back {
   text-decoration: none;
   font-family: "Roboto", Sans-Serif;
   color: black;
@@ -132,3 +133,35 @@ textarea {
   padding: 10px;
   padding-left: 58px;
   padding-right: 53px; }
+
+/*** Photo ID Page ***/
+#header_container {
+  display: flex;
+  justify-content: flex-start; }
+
+#photo_header {
+  font-family: "Roboto", Sans-Serif;
+  margin-left: 50px;
+  margin-top: 100px;
+  color: #7C7E84; }
+
+#photo {
+  margin-left: 50px;
+  display: flex;
+  justify-content: flex-start; }
+
+#photo_content, #desc_content {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 50px;
+  font-family: "Roboto", Sans-Serif;
+  font-size: 18px;
+  color: #7C7E84; }
+
+#desc_content {
+  margin-top: 15px;
+  margin-bottom: 100px; }
+
+#id_back {
+  padding-left: 37px;
+  padding-right: 37px; }

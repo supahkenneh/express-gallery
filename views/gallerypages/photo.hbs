@@ -1,6 +1,21 @@
-<div id="main_header">Photo: {{photo.attributes.id}}</div>
-<div id="author">Author: {{photo.attributes.author}}</div>
-<div id="photo">
-  <img src="{{photo.attributes.link}}" alt="image" height="600" width="900">
+<div id="secondary_header">
+  <div id="back">
+    <a href="http://localhost:3005/gallery" id="id_back"> Back </a>
+  </div>
+  <br>
+  <div id="logout">
+    <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+  </div>
 </div>
-<div id="description">{{photo.attributes.description}}</div>
+<div id="header_container">
+  <h1 id="photo_header">photo {{photo.attributes.id}}</h1>
+</div>
+<div id="photo">
+  <img src="{{photo.attributes.link}}" alt="image" height="733" width="1100">
+</div>
+<div id="photo_content">
+  <div id="author">Author: {{photo.attributes.author}}</div>
+</div>
+<div id="desc_content">
+  <div id="description">{{photo.attributes.description}}</div>
+</div>
