@@ -60,6 +60,10 @@ body {
   padding-left: 56px;
   padding-right: 56px; }
 
+#redirect_home {
+  background: transparent;
+  text-decoration: none; }
+
 /*** registration & login pages ***/
 #normal_header {
   font-family: "Roboto", Sans-Serif;
@@ -154,7 +158,7 @@ textarea {
 #back_button {
   text-decoration: none;
   font-family: "Roboto", Sans-Serif;
-  background-color: white;
+  background-color: transparent;
   color: black;
   border: solid 1px;
   padding: 10px;
@@ -188,6 +192,16 @@ textarea {
   font-size: 18px;
   color: #7C7E84; }
 
+#edit_button {
+  border: 1px solid black;
+  font-family: "Roboto", Sans-Serif;
+  padding: 10px;
+  font-size: 17px;
+  background: transparent;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 7px; }
+
 #delete_button {
   border: 1px solid black;
   font-family: "Roboto", Sans-Serif;
@@ -215,7 +229,17 @@ textarea {
   padding-left: 35px;
   padding-right: 35px; }
 
+/*** edit page ***/
+#put_button {
+  font-family: "Roboto", Sans-Serif;
+  border: 1px solid black;
+  padding: 10px;
+  background: transparent;
+  font-size: 17px;
+  padding-left: 59px;
+  padding-right: 59px; }
+
 /*** pretty stuff ***/
-#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover {
+#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {
   background: black;
   color: white; }

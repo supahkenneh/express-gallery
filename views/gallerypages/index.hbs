@@ -17,7 +17,7 @@
       </a>
     </div>
     <div class="author_div">{{firstpic.attributes.author}}</div>
-    <div class="description_div">{{firstpic.attributes.description}}</div>
+    <div class="description_div">{{firstpic.attributes.title}}</div>
     <div id="picture_grid">
       {{#each gallery}}
       <div class="cards">
@@ -26,7 +26,7 @@
             <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
           </a>
           <div class="card_author">{{this.attributes.author}}</div>
-          <div class="card_desc">{{this.attributes.description}}</div>
+          <div class="card_desc">{{this.attributes.title}}</div>
         </div>
       </div>
       {{/each}}

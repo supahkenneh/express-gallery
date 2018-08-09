@@ -1,8 +1,14 @@
 <div id="secondary_header">
   <div id="back">
-    <a href="http://localhost:3005/gallery" id="id_back"> Back </a>
+    <a href="http://localhost:3005/gallery" id="id_back"> back </a>
   </div>
   <br>
+  <div id="edit_container">
+    <form action="/gallery/{{photo.attributes.id}}/edit" method="POST" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="_method" value="GET">
+      <input type="submit" value="edit" id="edit_button">
+    </form>
+  </div>
   <div id="delete_container">
     <form action="/gallery/{{photo.attributes.id}}" method="POST" enctype="application/x-www-form-urlencoded">
       <input type="hidden" name="_method" value="DELETE">
@@ -14,7 +20,7 @@
   </div>
 </div>
 <div id="header_container">
-  <h1 id="photo_header">photo {{photo.attributes.id}}</h1>
+  <h1 id="photo_header">{{photo.attributes.title}}</h1>
 </div>
 <div id="photo">
   <img src="{{photo.attributes.link}}" alt="image" height="733" width="1100">

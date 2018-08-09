@@ -1,21 +1,25 @@
-<h1 id="normal_header">Add To Gallery</h1>
+<h1 id="normal_header">add to gallery</h1>
 <div id="messages">{{message}}</div>
 <form action="/gallery" enctype="application/x-www-form-urlencoded" method="POST">
-  <h1 class="header_input">Author:
+  <h1 class="header_input">title:
+    <br>
+    <input type="text" name="title" class="simple_line" value="{{photo.title}}">
+  </h1>
+  <h1 class="header_input">author:
     <br>
     <input type="text" name="author" class="simple_line" value="{{photo.author}}">
   </h1>
-  <h1 class="header_input">Link:
+  <h1 class="header_input">link:
     <br>
     <input type="url" name="link" class="simple_line" value="{{photo.link}}">
   </h1>
-  <h1 class="header_input">Description:
+  <h1 class="header_input">description:
     <br>
     <textarea name="description" id="description">{{photo.description}}</textarea>
   </h1>
   <input type="submit" value="Post" id="post_button">
   <br>
   <div id="back">
-    <a href="http://localhost:3005/gallery" id="back_button"> Back </a>
+    <a href="http://localhost:3005/gallery" id="back_button"> back </a>
   </div>
 </form>

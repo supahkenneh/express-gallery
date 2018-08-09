@@ -9,6 +9,7 @@ router.use(helpers.isAuthenticated);
 router.route('/')
   .post((req, res) => {
     let {
+      title,
       author,
       link,
       description
@@ -19,7 +20,7 @@ router.route('/')
       req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
-    return new Gallery({ author, link, description })
+    return new Gallery({ title, author, link, description })
       .save()
       .then(photo => {
         return res.redirect('/gallery')
@@ -75,18 +76,21 @@ router.route('/:id')
   .put((req, res) => {
     const id = req.params.id;
     let {
+      title,
       author,
       link,
       description
     } = req.body;
     return new Gallery({ id })
       .save({
+        title,
         author,
         link,
         description
       })
       .then(edited => {
-        return res.json(edited)
+        req.flash('success', 'image updated')
+        return res.redirect(`/gallery/${id}`)
       })
       .catch(err => {
         return res.json({ message: err.message });
