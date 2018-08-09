@@ -58,7 +58,7 @@ body {
   padding: 15px;
 }
 
-/*** registration page ***/
+/*** registration & login pages ***/
 #normal_header {
   font-family: $headerFont;
   color: $textColor;
@@ -89,4 +89,31 @@ body {
   font-family: $headerFont;
 }
 
+/*** gallery page ***/
+#gallery_body {
+  margin-top: 100px;
+  font-family: $headerFont;
+  font-size: 18px;
+}
 
+#username {
+  float: right;
+}
+
+#logout {
+  float: right;
+  margin-top: 20px;
+}
+
+#logout_button {
+  text-decoration: none;
+  font-family: $headerFont;
+  color: black;
+  border: solid 1px;
+  padding: 10px;
+}
+
+#pictures_grid {
+  display: flex;
+  flex-direction: row;
+}

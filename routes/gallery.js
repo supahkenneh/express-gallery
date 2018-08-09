@@ -29,9 +29,11 @@ router.route('/')
     return Gallery
       .fetchAll()
       .then(gallery => {
-        console.log(gallery);
-        return res.render('./gallerypages/index', { 
-          gallery: gallery.models, 
+        let firstPic = gallery.models;
+        let remainingPics = gallery.models.splice(1);
+        return res.render('./gallerypages/index', {
+          firstpic: firstPic[0], 
+          gallery: remainingPics, 
           username: req.user.username
         });
       })

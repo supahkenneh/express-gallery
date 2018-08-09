@@ -1,13 +1,27 @@
-<div id="username">logged in as: {{username}}</div>
-<div id="logout">
-  <a href="http://localhost:3005/logout">Logout</a>
+<div id="gallery_body">
+  <div id="username">logged in as: {{username}}</div>
+  <br>
+  <div id="logout">
+    <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+  </div>
+  <br>
+  <div id="pictures">
+    <div class="author_div">{{firstpic.attributes.author}}</div>
+    <div class="image_div">
+      <a href="http://localhost:3005/gallery/{{firstpic.id}}">
+        <img src="{{firstpic.attributes.link}}" alt="image" height="533" width="800">
+      </a>
+    </div>
+    <div id="picture_grid">
+      {{#each gallery}}
+      <div class="author_div">{{this.attributes.author}}</div>
+      <div id="image_div">
+        <a href="http://localhost:3005/gallery/{{this.id}}">
+          <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
+        </a>
+      </div>
+      <div id="description_div">{{this.attributes.description}}</div>
+      {{/each}}
+    </div>
+  </div>
 </div>
-{{#each gallery}}
-<div id="author_div">{{this.attributes.author}}</div>
-<div id="image_div">
-  <a href="http://localhost:3005/gallery/{{this.id}}">
-    <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
-  </a>
-</div>
-<div id="description_div">{{this.attributes.description}}</div>
-{{/each}}
