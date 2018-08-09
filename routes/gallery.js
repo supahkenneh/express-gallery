@@ -14,13 +14,14 @@ router.route('/')
       link,
       description
     } = req.body;
+    let author_id = req.user.id;
     author = author.trim();
     link = link.trim().toLowerCase();
     if (author.length < 1) {
       req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
-    return new Gallery({ title, author, link, description })
+    return new Gallery({ author_id, title, author, link, description })
       .save()
       .then(photo => {
         return res.redirect('/gallery')
@@ -81,6 +82,10 @@ router.route('/:id')
       link,
       description
     } = req.body;
+    if (author.length < 1 ) {
+      req.flash('msg4', 'author name required')
+      return res.redirect(`/gallery/${id}/edit`)
+    }
     return new Gallery({ id })
       .save({
         title,
@@ -117,6 +122,7 @@ router.route('/:id/edit')
       .then(photo => {
         return res.render('./gallerypages/edit', {
           photo: photo.attributes,
+          message: req.flash('msg4')
         })
       })
       .catch(err => {

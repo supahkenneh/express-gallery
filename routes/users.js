@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
 const User = require('../db/models/User');
+const helpers = require('../helpers/helpers');
+
+router.use(helpers.isAuthenticated);
 
 router.get('/', (req, res) => {
-  res.send('you got users');
 })
 
 module.exports = router;
