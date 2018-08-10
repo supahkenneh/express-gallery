@@ -20,6 +20,10 @@ a:hover {
   color: #636363;
 }
 
+textarea {
+  font-family: $headerFont;
+}
+
 #header_line {
   margin-top: 50px;
   height: 75px;
