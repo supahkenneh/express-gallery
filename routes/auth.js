@@ -71,14 +71,14 @@ router.route('/register')
       username,
       name,
       email
-     } = req.body;
-     req.flash('username', username);
-     req.flash('name', name);
-     req.flash('email', email);
+    } = req.body;
+    req.flash('username', username);
+    req.flash('name', name);
+    req.flash('email', email);
     if (username.length < 1) {
       req.flash('registerError', 'username required for registration')
       return res.redirect('/register');
-    } else if (req.body.password.length < 1 ) {
+    } else if (req.body.password.length < 1) {
       req.flash('registerError', 'password required for registration');
       return res.redirect('/register');
     }
@@ -113,8 +113,8 @@ router.post('/login', (req, res, next) => {
       req.flash('error', `wrong username or password`);
       return res.redirect('/login')
     } else if (!user) {
-        req.flash('error', `wrong username or password`);
-        return res.redirect('/login')
+      req.flash('error', `wrong username or password`);
+      return res.redirect('/login')
     } else if (req.body.username < 1 || req.body.password.length < 1) {
       req.flash('error', `wrong username or password`);
       return res.redirect('/login')

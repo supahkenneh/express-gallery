@@ -119,6 +119,16 @@ a:hover {
   background: transparent;
 }
 
+#post_button {
+  width: 140px;
+}
+
+#messages_form {
+  margin-top: 15px;
+  color: red;
+  font-family: $contentFont;
+}
+
 #auth_message {
   color: red;
   font-family: $contentFont;
@@ -237,8 +247,8 @@ textarea {
   color: black;
   border: solid 1px;
   padding: 10px;
-  padding-left: 58px;
-  padding-right: 53px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 /*** Photo ID Page ***/
@@ -282,6 +292,7 @@ textarea {
   padding-left: 44px;
   padding-right: 44px;
   margin-bottom: 7px;
+  margin-top: 20px;
 }
 
 #delete_button {
@@ -325,6 +336,10 @@ textarea {
   font-size: 17px;
   padding-left: 59px;
   padding-right: 59px;
+}
+
+#home {
+  margin-top: 20px;
 }
 
 /*** user's photo page ***/
@@ -668,7 +683,4 @@ textarea {
     height: 30px;
     width: 100%;
   }
-  
-  /*** edit page ***/
-
 }

@@ -13,7 +13,9 @@ router.route('/')
     let author_name = req.user.username;
     author = req.user.username;
     link = link.trim().toLowerCase();
-    if (author.length < 1) {
+    if (title.length < 1) {
+      req.flash('error', 'title required')
+      req.flash('photo', req.body)
       return res.redirect('/gallery/new')
     }
     return new Gallery({ author_name, title, author, link, description })
@@ -52,7 +54,9 @@ router.route('/')
 router.route('/new')
   .get(helpers.isAuthenticated, (req, res) => {
     return res.render('./gallerypages/new', {
-      username: req.user.username
+      message: req.flash('error'),
+      username: req.user.username,
+      photo: req.flash('photo')
     });
   });
 

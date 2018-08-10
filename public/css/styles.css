@@ -98,6 +98,14 @@ a:hover {
   font-family: "Roboto", Sans-Serif;
   background: transparent; }
 
+#post_button {
+  width: 140px; }
+
+#messages_form {
+  margin-top: 15px;
+  color: red;
+  font-family: "Droid Serif", Sans-Serif; }
+
 #auth_message {
   color: red;
   font-family: "Droid Serif", Sans-Serif;
@@ -199,8 +207,8 @@ textarea {
   color: black;
   border: solid 1px;
   padding: 10px;
-  padding-left: 58px;
-  padding-right: 53px; }
+  padding-left: 50px;
+  padding-right: 50px; }
 
 /*** Photo ID Page ***/
 #header_container {
@@ -237,7 +245,8 @@ textarea {
   background: transparent;
   padding-left: 44px;
   padding-right: 44px;
-  margin-bottom: 7px; }
+  margin-bottom: 7px;
+  margin-top: 20px; }
 
 #delete_button {
   border: 1px solid black;
@@ -276,6 +285,9 @@ textarea {
   font-size: 17px;
   padding-left: 59px;
   padding-right: 59px; }
+
+#home {
+  margin-top: 20px; }
 
 /*** user's photo page ***/
 #sidebar {
@@ -499,5 +511,4 @@ textarea {
     position: absolute;
     top: 37px;
     height: 30px;
-    width: 100%; }
-  /*** edit page ***/ }
+    width: 100%; } }
