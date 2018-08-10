@@ -1,18 +1,21 @@
 <div id="sidebar">
+  {{#if username}}
   <div id="username">logged in as: {{username}}</div>
+  {{/if}}
   <div id="new_pic">
     <a href="http://localhost:3005/gallery/" id="logout_button">home</a>
   </div>
   <br>
+  {{#if username}}
   <div id="logout">
     <a href="http://localhost:3005/logout" id="logout_button">logout</a>
   </div>
+  {{/if}}
   <div id="side_messages">{{message}}</div>
 </div>
 <div id="header_container">
   <h1 id="photo_header">{{user}}'s photos</h1>
 </div>
-<div id="message">{{message}}</div>
 <div class="user_content">
   {{#each photos}}
   <div class="user_photo">

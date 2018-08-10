@@ -7,9 +7,6 @@ function isAuthenticated(req, res, next) {
   }
 };
 
-function isOwner(req, res, next) {
-}
-
 module.exports = {
   isAuthenticated,
 }

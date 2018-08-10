@@ -2,7 +2,6 @@
   <div id="secondary_header">
     {{#if username}}
     <div id="username">logged in as: {{username}}</div>
-    {{/if}}
     <div id="new_pic">
       <a href="http://localhost:3005/gallery/new" id="post_button">post a picture</a>
     </div>
@@ -10,6 +9,7 @@
     <div id="logout">
       <a href="http://localhost:3005/logout" id="logout_button">logout</a>
     </div>
+    {{/if}}
     <div id="side_messages">{{message}}</div>
   </div>
   {{#if registration}}

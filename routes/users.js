@@ -5,13 +5,16 @@ const Gallery = require('../db/models/Gallery');
 
 const helpers = require('../helpers/helpers');
 
-router.use(helpers.isAuthenticated);
-
 router.get('/', (req, res) => {
   res.redirect('/gallery');
 });
 
 router.get('/:user', (req, res) => {
+  if (!req.user) {
+    username = ''
+  } else {
+    username = req.user.username 
+  }
   const user = req.params.user;
   return Gallery
     .query({ where: { author_name: user } })
@@ -24,7 +27,7 @@ router.get('/:user', (req, res) => {
       return res.render('./gallerypages/userphotos', {
         user,
         photos: photo.models,
-        username: req.user.username
+        username,
       })
     })
 })
