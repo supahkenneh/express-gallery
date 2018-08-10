@@ -10,15 +10,13 @@ router.route('/')
   .post(helpers.isAuthenticated, (req, res) => {
     let {
       title,
-      author,
       link,
       description
     } = req.body;
     let author_name = req.user.username;
-    author = author.trim();
+    author = req.user.username;
     link = link.trim().toLowerCase();
     if (author.length < 1) {
-      req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
     return new Gallery({ author_name, title, author, link, description })
@@ -40,7 +38,6 @@ router.route('/')
           firstpic: firstPic[0],
           gallery: remainingPics,
           username: req.user.username,
-          message: req.flash('msg3')
         });
       })
       .catch(err => {
@@ -51,7 +48,6 @@ router.route('/')
 router.route('/new')
   .get(helpers.isAuthenticated, (req, res) => {
     return res.render('./gallerypages/new', {
-      message: req.flash('msg4'),
       username: req.user.username
     });
   });
@@ -87,20 +83,28 @@ router.route('/:id')
       link,
       description
     } = req.body;
-    return new Gallery({ id })
-      .save({
-        title,
-        link,
-        description
+    return Gallery
+      .query({ where: { id } })
+      .fetchAll()
+      .then(result => {
+        if (req.user.username !== result.models[0].attributes.author) {
+          req.flash('error', `you don't have rights to edit this`);
+          return res.redirect(`/gallery/${id}/edit`)
+        }
+        return new Gallery({ id })
+          .save({
+            title,
+            link,
+            description
+          })
+          .then(edited => {
+            req.flash('success', 'image updated')
+            return res.redirect(`/gallery/${id}`)
+          })
+          .catch(err => {
+            return res.json({ message: err.message });
+          });
       })
-      .then(edited => {
-        console.log(edited);
-        req.flash('success', 'image updated')
-        return res.redirect(`/gallery/${id}`)
-      })
-      .catch(err => {
-        return res.json({ message: err.message });
-      });
   })
   .delete(helpers.isAuthenticated, (req, res) => {
     const id = req.params.id;
@@ -132,7 +136,7 @@ router.route('/:id/edit')
       .then(photo => {
         return res.render('./gallerypages/edit', {
           photo: photo.attributes,
-          message: req.flash('msg4'),
+          message: req.flash('error'),
           username: req.user.username
         })
       })
