@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.text('link').notNullable();
     table.text('description');
     table.timestamps(true, true);
+    table.string('author_name').notNullable().references('users.username')
+    table.string('title', 50)
   });
 };;
 

@@ -5,7 +5,7 @@ class Gallery extends bookshelf.Model {
   get hasTimestamps() { return true };
 
   author() {
-    return this.belongsTo('User', 'author')
+    return this.belongsTo('User', 'author_name')
   }
 };
 

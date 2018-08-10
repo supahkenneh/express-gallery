@@ -5,7 +5,7 @@ class User extends bookshelf.Model {
   get hasTimestamps() { return true };
 
   gallery() {
-    return this.hasMany('Gallery', 'author');
+    return this.hasMany('Gallery', 'author_name');
   }
 };
 

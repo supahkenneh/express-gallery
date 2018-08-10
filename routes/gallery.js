@@ -14,14 +14,14 @@ router.route('/')
       link,
       description
     } = req.body;
-    let author_id = req.user.id;
+    let author_name = req.user.username;
     author = author.trim();
     link = link.trim().toLowerCase();
     if (author.length < 1) {
       req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
-    return new Gallery({ author_id, title, author, link, description })
+    return new Gallery({ author_name , title, author, link, description })
       .save()
       .then(photo => {
         return res.redirect('/gallery')
@@ -51,17 +51,23 @@ router.route('/')
 router.route('/new')
   .get((req, res) => {
     return res.render('./gallerypages/new', {
-      message: req.flash('msg4')
+      message: req.flash('msg4'),
+      username: req.user.username
     });
   });
 
 router.route('/:id')
   .get((req, res) => {
     const id = req.params.id;
+    if(isNaN(Number(id))){
+      req.flash('msg3', `image doesn't exist`)
+      return res.redirect('/gallery');
+    }
     return Gallery
       .query({ where: { id } })
       .fetchAll()
       .then(photo => {
+        console.log(photo);
         if (!photo.models[0]) {
           req.flash('msg3', `image doesn't exist`)
           return res.redirect('/gallery');
@@ -78,22 +84,17 @@ router.route('/:id')
     const id = req.params.id;
     let {
       title,
-      author,
       link,
       description
     } = req.body;
-    if (author.length < 1 ) {
-      req.flash('msg4', 'author name required')
-      return res.redirect(`/gallery/${id}/edit`)
-    }
     return new Gallery({ id })
       .save({
         title,
-        author,
         link,
         description
       })
       .then(edited => {
+        console.log(edited);
         req.flash('success', 'image updated')
         return res.redirect(`/gallery/${id}`)
       })
@@ -122,7 +123,8 @@ router.route('/:id/edit')
       .then(photo => {
         return res.render('./gallerypages/edit', {
           photo: photo.attributes,
-          message: req.flash('msg4')
+          message: req.flash('msg4'),
+          username: req.user.username
         })
       })
       .catch(err => {

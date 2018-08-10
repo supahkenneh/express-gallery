@@ -243,6 +243,24 @@ textarea {
   padding-left: 59px;
   padding-right: 59px; }
 
+/*** user's photo page ***/
+#sidebar {
+  float: right;
+  margin-top: 150px;
+  font-family: "Roboto", Sans-Serif;
+  color: #7C7E84; }
+
+.user_content {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  font-family: "Roboto", Sans-Serif;
+  color: #7C7E84;
+  margin-bottom: 200px; }
+
+.user_photo {
+  margin: 10px; }
+
 /*** pretty stuff ***/
 #delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {
   background: black;

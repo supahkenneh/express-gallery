@@ -1,0 +1,29 @@
+<div id="sidebar">
+  <div id="username">logged in as: {{username}}</div>
+  <div id="new_pic">
+    <a href="http://localhost:3005/gallery/" id="logout_button">home</a>
+  </div>
+  <br>
+  <div id="logout">
+    <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+  </div>
+  <div id="side_messages">{{message}}</div>
+</div>
+<div id="header_container">
+  <h1 id="photo_header">{{user}}'s photos</h1>
+</div>
+<div id="message">{{message}}</div>
+<div class="user_content">
+  {{#each photos}}
+  <div class="user_photo">
+    <div class="photo_container">
+      <a href="http://localhost:3005/gallery/{{this.id}}">
+        <img src="{{this.attributes.link}}" alt="image" height="400" width="600">
+      </a>
+    </div>
+    <div class="content_container">
+      <div class="content_desc">{{this.attributes.description}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>
