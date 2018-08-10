@@ -72,7 +72,8 @@ router.route('/:id')
           return res.redirect('/gallery');
         }
         return res.render('./gallerypages/photo', {
-          photo: photo.models[0]
+          photo: photo.models[0],
+          message: req.flash('error')
         });
       })
       .catch(err => {
@@ -103,14 +104,23 @@ router.route('/:id')
   })
   .delete(helpers.isAuthenticated, (req, res) => {
     const id = req.params.id;
-    return new Gallery({ id })
-      .destroy()
+    return Gallery
+      .query({ where: { id } })
+      .fetchAll()
       .then(result => {
-        return res.redirect('/gallery');
+        if (req.user.username !== result.models[0].attributes.author) {
+          req.flash('error', `you don't have the rights to delete this image`)
+          return res.redirect(`/gallery/${id}`)
+        }
+        return new Gallery({ id })
+          .destroy()
+          .then(result => {
+            return res.redirect('/gallery');
+          })
+          .catch(err => {
+            return res.json({ message: err.message });
+          });
       })
-      .catch(err => {
-        return res.json({ message: err.message });
-      });
   });
 
 router.route('/:id/edit')

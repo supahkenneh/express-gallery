@@ -1,3 +1,17 @@
+<div id="sidebar">
+  <div id="back">
+    <a href="http://localhost:3005/gallery/{{photo.id}}" id="id_back"> back </a>
+  </div>
+  <br>
+  <div id="delete_container">
+    <form action="/gallery/{{photo.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="delete" id="delete_button">
+    </form>
+  </div>
+  <br>
+  <div id="messages">{{message}}</div>
+</div>
 <h1 id="normal_header">edit this photo</h1>
 <div id="messages">{{message}}</div>
 <form action="/gallery/{{photo.id}}" enctype="application/x-www-form-urlencoded" method="POST">
@@ -6,10 +20,6 @@
     <br>
     <input type="text" name="title" class="simple_line" value="{{photo.title}}">
   </h1>
-  {{!-- <h1 class="header_input">author:
-    <br>
-    <input type="text" name="author" class="simple_line" value="{{username}}">
-  </h1> --}}
   <h1 class="header_input">link:
     <br>
     <input type="text" name="link" class="simple_line" value="{{photo.link}}">
