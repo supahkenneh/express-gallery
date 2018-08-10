@@ -371,10 +371,11 @@ textarea {
   #new_pic, #logout {
     margin: 0;
     padding: 10px; }
+  #side_messages {
+    position: absolute;
+    top: 43%; }
   #post_button, #logout_button {
     padding: 5px; }
-  #post_button {
-    margin-left: 45px; }
   /*** photo id page ***/
   #id_photo, #photo {
     height: 466px;
@@ -399,7 +400,23 @@ textarea {
   #logout {
     padding: 6px; }
   #back {
-    margin-top: 6px;
+    margin-top: 6px; }
+  /*** edit page ***/
+  #normal_header {
+    margin-top: 110px; }
+  #put_button, #back_button {
+    padding: 5px; }
+  #home {
+    margin-top: 30px; }
+  /*** post page ***/
+  #post_button {
+    margin-bottom: 15px;
+    padding: 0;
+    height: 30px;
+    width: 70px; }
+  /*** user page ***/
+  .user_content {
     margin-left: 80px; }
   #delete_button, #logout_button, #id_back, #post_button, #back_button, #landing_page, .home_register, .home_login, #register_button, #login_button, #register_back, #edit_button, #put_button {
-    border-radius: 3px; } }
+    border: none;
+    text-decoration: underline; } }

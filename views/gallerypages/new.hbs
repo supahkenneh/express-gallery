@@ -1,8 +1,4 @@
 <div id="sidebar">
-  <div id="back">
-    <a href="http://localhost:3005/gallery/{{photo.id}}" id="id_back"> back </a>
-  </div>
-  <br>
   <div id="messages">{{message}}</div>
 </div>
 <h1 id="normal_header">add to gallery</h1>
@@ -20,7 +16,7 @@
     <textarea name="description" id="description">{{photo.description}}</textarea>
   </h1>
   <input type="submit" value="post" id="post_button">
-  <br>
+  {{!-- <br> --}}
   <div id="back">
     <a href="http://localhost:3005/gallery" id="back_button"> back </a>
   </div>
