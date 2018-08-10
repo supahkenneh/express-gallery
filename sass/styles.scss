@@ -51,7 +51,7 @@ a:hover {
   font-family: $headerFont;
   font-size: 18px;
   height: 100px;
-  width: 400px;
+  width: 390px;
   margin-left: 20px;
 }
 
@@ -453,8 +453,11 @@ textarea {
     border: none;
   }
 
-  #new_pic, #logout {
+  #logout {
     margin: 0;
+  }
+
+  #new_pic {
     padding: 10px;
   }
 
@@ -505,7 +508,6 @@ textarea {
 
   #back {
     margin-top: 6px;
-    // margin-left: 80px;
   }
 
   /*** edit page ***/
@@ -537,8 +539,133 @@ textarea {
   }
 
   #delete_button, #logout_button, #id_back, #post_button, #back_button, #landing_page, .home_register, .home_login, #register_button, #login_button, #register_back, #edit_button, #put_button {
-    // border-radius: 3px;
     border: none;
     text-decoration: underline;
+  }
+}
+
+@media (max-width: 414px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #main_header {
+    font-size: 32px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #welcome {
+    display: none;
+  }
+
+  .image_div {
+    height: 233px;
+    width: 350px;
+  }
+
+  .card_image {
+    height: 233px;
+    width: 350px;
+  }
+
+  #first_image {
+    height: 233px;
+    width: 350px;
+  }
+
+  #small_img {
+    height: 233px;
+    width: 350px;
+  }
+
+  #auth_body {
+    top: 130px;
+    width: 100%;
+  }
+
+  .cards {
+    height: 295px;
+  }
+
+  #secondary_header {
+    position: absolute;
+    top: 130px;
+  }
+
+  #username {
+    position: absolute;
+    top: -45px;
+  }
+
+  #logout {
+    padding-top: 10px;
+  }
+
+  /*** photo id page ***/
+  #photo_header {
+    font-size: 24px;
+  }
+  
+  #sidebar {
+    position: absolute;
+    top: 105px;
+  }
+
+  #back, #edit_container, #delete_container {
+    padding-top: 4px;
+  }
+
+  #photo, #id_photo {
+    height: 233px;
+    width: 345px;
+    margin: 0;
+  }
+
+  #header_container {
+    margin: 0;
+    margin-top: 90px;
+    justify-content: center;
+    #photo_header {
+      margin: 0;
+    }
+  }
+
+  #photo_content, #desc_content {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  /*** user id page ***/
+  .user_content {
+    margin: 0;
+    margin-bottom: 75px;
+  }
+
+  .user_photo {
+    margin: 0;
+  }
+
+  .photo_container {
+    width: 345px;
+    height: 233px;
+  }
+
+  #mobile_image {
+    width: 345px;
+    height: 233px;
+  }
+
+  #messages {
+    position: absolute;
+    top: 37px;
+    height: 30px;
+    width: 100%;
   }
 }
