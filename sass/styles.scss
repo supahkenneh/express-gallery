@@ -377,7 +377,6 @@ textarea {
   }
 
   #welcome {
-    // width: 30%;
     width: 300px;
     height: 95px;
     padding: 10px;
@@ -401,6 +400,8 @@ textarea {
     margin-left: 15px;
     margin-top: 30px;
   }
+
+  /*** logged out index ***/
 
   #gallery_body {
     display: flex;
@@ -434,6 +435,8 @@ textarea {
     padding: 5px;
   }
 
+  /*** logged in index ***/
+
   #secondary_header {
     position: absolute;
     display: flex;
@@ -461,6 +464,47 @@ textarea {
 
   #post_button {
     margin-left: 45px;
+  }
+
+  /*** photo id page ***/
+
+  #id_photo, #photo {
+    height: 466px;
+    width: 700px;
+  }
+
+  #header_container {
+    margin-top: 30px;
+  }
+
+  #sidebar {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    top: 33%;
+    right: 0;
+    justify-content: space-evenly;
+    height: 50px;
+  }
+
+  #messages {
+    position: absolute;
+    top: 60px;
+  }
+
+  #edit_button, #delete_button, #id_back {
+    margin: 0;
+    padding: 5px;
+  }
+
+  #logout {
+    padding: 6px;
+  }
+
+  #back {
+    margin-top: 6px;
+    margin-left: 80px;
   }
 
   #delete_button, #logout_button, #id_back, #post_button, #back_button, #landing_page, .home_register, .home_login, #register_button, #login_button, #register_back, #edit_button, #put_button {

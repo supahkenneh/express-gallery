@@ -2,7 +2,7 @@
   <div id="back">
     <a href="http://localhost:3005/gallery" id="id_back"> back </a>
   </div>
-  <br> 
+  {{!-- <br>  --}}
   {{#if username}}
   <div id="edit_container">
     <form action="/gallery/{{photo.attributes.id}}/edit" method="POST" enctype="application/x-www-form-urlencoded">
@@ -27,7 +27,7 @@
   <h1 id="photo_header">{{photo.attributes.title}}</h1>
 </div>
 <div id="photo">
-  <img src="{{photo.attributes.link}}" alt="image" height="733" width="1100">
+  <img src="{{photo.attributes.link}}" alt="image" id="id_photo" height="733" width="1100">
 </div>
 <div id="photo_content">
   <a href="http://localhost:3005/users/{{photo.attributes.author}}">

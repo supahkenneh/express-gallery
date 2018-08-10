@@ -94,7 +94,7 @@ router.route('/:id')
       .then(result => {
         if (req.user.username !== result.models[0].attributes.author) {
           req.flash('error', `you don't have rights to edit this`);
-          return res.redirect(`/gallery/${id}/edit`)
+          return res.redirect(`/gallery/${id}/`)
         }
         return new Gallery({ id })
           .save({
