@@ -361,7 +361,7 @@ textarea {
   color: white;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px){
   body {
     display: flex;
     flex-direction: column;
@@ -426,7 +426,7 @@ textarea {
     display: flex;
     flex-direction: row;
     width: 100%;
-    top: 33%;
+    top: 125px;
     left: 0;
     justify-content: space-evenly;
   }
@@ -442,7 +442,7 @@ textarea {
     display: flex;
     flex-direction: row;
     width: 100%;
-    top: 33%;
+    top: 125px;
     right: 0;
     justify-content: space-evenly;
     height: 50px;
@@ -486,7 +486,7 @@ textarea {
     display: flex;
     flex-direction: row;
     width: 100%;
-    top: 33%;
+    top: 125px;
     right: 0;
     justify-content: space-evenly;
     height: 50px;
@@ -668,4 +668,7 @@ textarea {
     height: 30px;
     width: 100%;
   }
+  
+  /*** edit page ***/
+
 }
