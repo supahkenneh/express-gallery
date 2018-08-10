@@ -34,6 +34,13 @@ router.route('/')
       .then(gallery => {
         let firstPic = gallery.models;
         let remainingPics = gallery.models.splice(1);
+        if (!req.user) {          
+          return res.render('./gallerypages/index', {
+            firstpic: firstPic[0],
+            gallery: remainingPics,
+            registration: true
+          })
+        }
         return res.render('./gallerypages/index', {
           firstpic: firstPic[0],
           gallery: remainingPics,

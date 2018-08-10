@@ -54,7 +54,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 router.get('/', (req, res) => {
-  res.render('landingpage');
+  res.redirect('/gallery');
 });
 
 router.route('/register')

@@ -12,6 +12,18 @@
     </div>
     <div id="side_messages">{{message}}</div>
   </div>
+  {{#if registration}}
+  <div id="auth_body">
+    <div id="home_register">
+      <a href="http://localhost:3005/register" class="home_register">register</a>
+    </div>
+    <br>
+    <br>
+    <div id="home_login">
+      <a href="http://localhost:3005/login" class="home_login">login</a>
+    </div>
+  </div>
+  {{/if}}
   <div id="pictures">
     <div class="image_div">
       <a href="http://localhost:3005/gallery/{{firstpic.id}}">

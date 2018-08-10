@@ -61,14 +61,6 @@ a:hover {
   margin-top: 150px;
 }
 
-.user_buttons {
-  text-decoration: none;
-  font-family: $headerFont;
-  color: black;
-  border: solid black 1px;
-  padding: 15px;
-}
-
 #messages {
   color: red;
   font-family: $contentFont;
@@ -127,7 +119,34 @@ a:hover {
   background: transparent;
 }
 
+#auth_message {
+  color: red;
+  font-family: $contentFont;
+  font-size: 14px;
+}
+
 /*** gallery page ***/
+#auth_body {
+  position: fixed;
+  top: 35%;
+  left: 3%;
+}
+
+.home_login, .home_register {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.home_login {
+  padding-left: 29px;
+  padding-right: 29px;
+}
+
 #gallery_body {
   margin-top: 100px;
   font-family: $headerFont;
@@ -336,7 +355,7 @@ textarea {
 }
 
 /*** pretty stuff ***/
-#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {
+#delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .home_register:hover, .home_login:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {
   background: black;
   color: white;
 }
