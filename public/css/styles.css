@@ -305,3 +305,53 @@ textarea {
 #delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .home_register:hover, .home_login:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {
   background: black;
   color: white; }
+
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    margin: 0;
+    padding: 0; }
+  #welcome, #message {
+    margin: 0;
+    padding: 0; }
+  #welcome {
+    width: 30%;
+    height: 105px; }
+  #message {
+    width: 80%;
+    padding: 20px; }
+  #header_line {
+    border: none;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly; }
+  #main_header {
+    width: 100%;
+    font-size: 42px;
+    margin-left: 30px;
+    margin-top: 30px; }
+  #gallery_body {
+    display: flex;
+    flex-direction: column; }
+  #first_image {
+    height: 333px;
+    width: 500px; }
+  .image_div {
+    margin-top: 30px; }
+  .description_div, .card_desc {
+    border: none; }
+  #auth_body {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    top: 33%;
+    left: 0;
+    justify-content: space-evenly; }
+  .home_register, .home_login {
+    padding: 5px; }
+  #delete_button, #logout_button, #id_back, #post_button, #back_button, #landing_page, .home_register, .home_login, #register_button, #login_button, #register_back, #edit_button, #put_button {
+    border-radius: 3px; } }
