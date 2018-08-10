@@ -3,9 +3,6 @@ const router = express.Router();
 
 const helpers = require('../helpers/helpers');
 const Gallery = require('../db/models/Gallery');
-
-// router.use(helpers.isAuthenticated);
-
 router.route('/')
   .post(helpers.isAuthenticated, (req, res) => {
     let {
@@ -34,7 +31,7 @@ router.route('/')
       .then(gallery => {
         let firstPic = gallery.models;
         let remainingPics = gallery.models.splice(1);
-        if (!req.user) {          
+        if (!req.user) {
           return res.render('./gallerypages/index', {
             firstpic: firstPic[0],
             gallery: remainingPics,
@@ -76,7 +73,8 @@ router.route('/:id')
         }
         return res.render('./gallerypages/photo', {
           photo: photo.models[0],
-          message: req.flash('error')
+          message: req.flash('error'),
+          username: true
         });
       })
       .catch(err => {

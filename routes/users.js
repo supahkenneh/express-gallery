@@ -3,8 +3,6 @@ const router = require('express').Router();
 const User = require('../db/models/User');
 const Gallery = require('../db/models/Gallery');
 
-const helpers = require('../helpers/helpers');
-
 router.get('/', (req, res) => {
   res.redirect('/gallery');
 });
@@ -13,7 +11,7 @@ router.get('/:user', (req, res) => {
   if (!req.user) {
     username = ''
   } else {
-    username = req.user.username 
+    username = req.user.username
   }
   const user = req.params.user;
   return Gallery
