@@ -1,13 +1,15 @@
+<div id="sidebar">
+  <div id="back">
+    <a href="http://localhost:3005/gallery/{{photo.id}}" id="id_back"> back </a>
+  </div>
+  <br>
+  <div id="messages">{{message}}</div>
+</div>
 <h1 id="normal_header">add to gallery</h1>
-<div id="messages">{{message}}</div>
 <form action="/gallery" enctype="application/x-www-form-urlencoded" method="POST">
   <h1 class="header_input">title:
     <br>
     <input type="text" name="title" class="simple_line" value="{{photo.title}}">
-  </h1>
-  <h1 class="header_input">author:
-    <br>
-    <input type="text" name="author" class="simple_line" value="{{username}}">
   </h1>
   <h1 class="header_input">link:
     <br>
