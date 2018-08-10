@@ -5,6 +5,11 @@ body {
   padding-left: 50px;
   padding-right: 50px; }
 
+a {
+  color: black;
+  font-family: "Roboto", Sans-Serif;
+  font-size: 18px; }
+
 #header_line {
   margin-top: 50px;
   height: 75px;
@@ -30,8 +35,10 @@ body {
   text-align: center;
   color: #7C7E84;
   font-family: "Roboto", Sans-Serif;
-  margin: 10px;
-  font-size: 18px; }
+  font-size: 18px;
+  height: 100px;
+  width: 400px;
+  margin-left: 20px; }
 
 .content {
   display: flex;
@@ -105,7 +112,8 @@ body {
   right: 50px;
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", Sans-Serif; }
+  font-family: "Roboto", Sans-Serif;
+  margin-right: -20px; }
 
 #username {
   border-bottom: 1px solid lightgray;
@@ -121,17 +129,19 @@ body {
   color: black;
   border: solid 1px;
   padding: 10px;
-  background: transparent; }
+  background: transparent;
+  font-size: 18px; }
 
 #logout_button {
-  padding-left: 33px;
-  padding-right: 33px; }
+  padding-left: 38px;
+  padding-right: 38px; }
 
 #picture_grid {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
-  justify-content: center; }
+  justify-content: center;
+  margin-bottom: 150px; }
 
 .cards {
   margin-top: 25px;
@@ -202,16 +212,16 @@ textarea {
   padding: 10px;
   font-size: 17px;
   background: transparent;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 44px;
+  padding-right: 44px;
   margin-bottom: 7px; }
 
 #delete_button {
   border: 1px solid black;
   font-family: "Roboto", Sans-Serif;
   padding: 10px;
-  padding-left: 31px;
-  padding-right: 31px;
+  padding-left: 35px;
+  padding-right: 35px;
   font-size: 17px;
   background: transparent; }
 
@@ -260,6 +270,9 @@ textarea {
 
 .user_photo {
   margin: 10px; }
+
+.content_desc {
+  font-size: 18px; }
 
 /*** pretty stuff ***/
 #delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .user_buttons:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {

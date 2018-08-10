@@ -10,6 +10,12 @@ body {
   padding-right: 50px;
 }
 
+a {
+  color: black;
+  font-family: $headerFont;
+  font-size: 18px;
+}
+
 #header_line {
   margin-top: 50px;
   height: 75px;
@@ -39,8 +45,10 @@ body {
   text-align: center;
   color: $textColor;
   font-family: $headerFont;
-  margin: 10px;
   font-size: 18px;
+  height: 100px;
+  width: 400px;
+  margin-left: 20px;
 }
 
 .content {
@@ -127,6 +135,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: $headerFont;
+  margin-right: -20px;
 }
 
 #username {
@@ -146,11 +155,12 @@ body {
   border: solid 1px;
   padding: 10px;
   background: transparent;
+  font-size: 18px;
 }
 
 #logout_button {
-  padding-left: 33px;
-  padding-right: 33px;
+  padding-left: 38px;
+  padding-right: 38px;
 }
 
 #picture_grid {
@@ -158,6 +168,7 @@ body {
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
+  margin-bottom: 150px;
 }
 
 .cards {
@@ -241,8 +252,8 @@ textarea {
   padding: 10px;
   font-size: 17px;
   background: transparent;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 44px;
+  padding-right: 44px;
   margin-bottom: 7px;
 }
 
@@ -250,8 +261,8 @@ textarea {
   border: 1px solid black;
   font-family: $headerFont;
   padding: 10px;
-  padding-left: 31px;
-  padding-right: 31px;
+  padding-left: 35px;
+  padding-right: 35px;
   font-size: 17px;
   background: transparent;
 }
@@ -307,6 +318,10 @@ textarea {
 
 .user_photo {
   margin: 10px;
+}
+
+.content_desc {
+  font-size: 18px;
 }
 
 /*** pretty stuff ***/

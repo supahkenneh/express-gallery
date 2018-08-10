@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const PORT = process.env.port || 3005;
+// const routes = require('./routes');
 const auth = require('./routes/auth');
 const user = require('./routes/users');
 const gallery = require('./routes/gallery');
@@ -39,6 +40,7 @@ app.use(passport.session());
 app.use('/', auth);
 app.use('/users', user);
 app.use('/gallery', gallery);
+// app.use('/', routes);
 
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',

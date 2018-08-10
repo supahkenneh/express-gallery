@@ -4,10 +4,10 @@ const router = express.Router();
 const helpers = require('../helpers/helpers');
 const Gallery = require('../db/models/Gallery');
 
-router.use(helpers.isAuthenticated);
+// router.use(helpers.isAuthenticated);
 
 router.route('/')
-  .post((req, res) => {
+  .post(helpers.isAuthenticated, (req, res) => {
     let {
       title,
       author,
@@ -21,7 +21,7 @@ router.route('/')
       req.flash('msg4', 'author name required')
       return res.redirect('/gallery/new')
     }
-    return new Gallery({ author_name , title, author, link, description })
+    return new Gallery({ author_name, title, author, link, description })
       .save()
       .then(photo => {
         return res.redirect('/gallery')
@@ -37,8 +37,8 @@ router.route('/')
         let firstPic = gallery.models;
         let remainingPics = gallery.models.splice(1);
         return res.render('./gallerypages/index', {
-          firstpic: firstPic[0], 
-          gallery: remainingPics, 
+          firstpic: firstPic[0],
+          gallery: remainingPics,
           username: req.user.username,
           message: req.flash('msg3')
         });
@@ -49,7 +49,7 @@ router.route('/')
   });
 
 router.route('/new')
-  .get((req, res) => {
+  .get(helpers.isAuthenticated, (req, res) => {
     return res.render('./gallerypages/new', {
       message: req.flash('msg4'),
       username: req.user.username
@@ -59,7 +59,7 @@ router.route('/new')
 router.route('/:id')
   .get((req, res) => {
     const id = req.params.id;
-    if(isNaN(Number(id))){
+    if (isNaN(Number(id))) {
       req.flash('msg3', `image doesn't exist`)
       return res.redirect('/gallery');
     }
@@ -67,12 +67,11 @@ router.route('/:id')
       .query({ where: { id } })
       .fetchAll()
       .then(photo => {
-        console.log(photo);
         if (!photo.models[0]) {
           req.flash('msg3', `image doesn't exist`)
           return res.redirect('/gallery');
         }
-        return res.render('./gallerypages/photo', { 
+        return res.render('./gallerypages/photo', {
           photo: photo.models[0]
         });
       })
@@ -80,7 +79,7 @@ router.route('/:id')
         return res.json({ message: err.message });
       });
   })
-  .put((req, res) => {
+  .put(helpers.isAuthenticated, (req, res) => {
     const id = req.params.id;
     let {
       title,
@@ -102,7 +101,7 @@ router.route('/:id')
         return res.json({ message: err.message });
       });
   })
-  .delete((req, res) => {
+  .delete(helpers.isAuthenticated, (req, res) => {
     const id = req.params.id;
     return new Gallery({ id })
       .destroy()
@@ -115,7 +114,7 @@ router.route('/:id')
   });
 
 router.route('/:id/edit')
-  .get((req, res) => {
+  .get(helpers.isAuthenticated, (req, res) => {
     const id = req.params.id;
     return Gallery
       .query({ where: { id } })

@@ -1,6 +1,8 @@
 <div id="gallery_body">
   <div id="secondary_header">
+    {{#if username}}
     <div id="username">logged in as: {{username}}</div>
+    {{/if}}
     <div id="new_pic">
       <a href="http://localhost:3005/gallery/new" id="post_button">post a picture</a>
     </div>
@@ -16,7 +18,9 @@
         <img src="{{firstpic.attributes.link}}" alt="image" height="733" width="1100">
       </a>
     </div>
-    <div class="author_div">{{firstpic.attributes.author}}</div>
+    <a href="http://localhost:3005/users/{{firstpic.attributes.author}}">
+      <div class="author_div">@{{firstpic.attributes.author}}</div>
+    </a>
     <div class="description_div">{{firstpic.attributes.title}}</div>
     <div id="picture_grid">
       {{#each gallery}}
@@ -25,7 +29,9 @@
           <a href="http://localhost:3005/gallery/{{this.id}}">
             <img src="{{this.attributes.link}}" alt="image" height="333" width="500">
           </a>
-          <div class="card_author">{{this.attributes.author}}</div>
+          <a href="http://localhost:3005/users/{{this.attributes.author}}">
+            <div class="card_author">@{{this.attributes.author}}</div>
+          </a>
           <div class="card_desc">{{this.attributes.title}}</div>
         </div>
       </div>
