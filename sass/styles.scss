@@ -377,13 +377,15 @@ textarea {
   }
 
   #welcome {
-    width: 30%;
-    height: 105px;
+    // width: 30%;
+    width: 300px;
+    height: 95px;
+    padding: 10px;
   }
 
   #message {
-    width: 80%;
-    padding: 20px;
+    width: 300px;
+    padding-top: 20px;
   }
 
   #header_line {
@@ -396,7 +398,7 @@ textarea {
   #main_header {
     width: 100%;
     font-size: 42px;
-    margin-left: 30px;
+    margin-left: 15px;
     margin-top: 30px;
   }
 
@@ -430,6 +432,35 @@ textarea {
 
   .home_register, .home_login {
     padding: 5px;
+  }
+
+  #secondary_header {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    top: 33%;
+    right: 0;
+    justify-content: space-evenly;
+    height: 50px;
+  }
+  
+  #username {
+    position: absolute;
+    border: none;
+  }
+
+  #new_pic, #logout {
+    margin: 0;
+    padding: 10px;
+  }
+
+  #post_button, #logout_button {
+    padding: 5px;
+  }
+
+  #post_button {
+    margin-left: 45px;
   }
 
   #delete_button, #logout_button, #id_back, #post_button, #back_button, #landing_page, .home_register, .home_login, #register_button, #login_button, #register_back, #edit_button, #put_button {
