@@ -179,9 +179,16 @@ textarea {
 
 .cards {
   margin-top: 25px;
+  margin: 20px; }
+
+.card_image {
   height: 400px;
-  width: 525px;
-  margin: 10px; }
+  width: 500px;
+  margin-bottom: 20px; }
+
+#small_img {
+  max-height: 100%;
+  max-width: 100%; }
 
 .description_div {
   margin-bottom: 20px; }
@@ -398,9 +405,13 @@ textarea {
   #post_button, #logout_button {
     padding: 5px; }
   /*** photo id page ***/
-  #id_photo, #photo {
-    height: 466px;
-    width: 700px; }
+  #photo {
+    height: 700px;
+    width: 700px;
+    margin-bottom: 150px; }
+  #id_photo {
+    max-height: 100%;
+    max-width: 100%; }
   #header_container {
     margin-top: 30px; }
   #sidebar {

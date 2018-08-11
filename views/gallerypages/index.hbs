@@ -39,13 +39,13 @@
       <div class="cards">
         <div class="card_image">
           <a href="http://localhost:3005/gallery/{{this.id}}">
-            <img src="{{this.attributes.link}}" alt="image" id="small_img" height="333" width="500">
+            <img src="{{this.attributes.link}}" alt="image" id="small_img">
           </a>
-          <a href="http://localhost:3005/users/{{this.attributes.author}}">
-            <div class="card_author">@{{this.attributes.author}}</div>
-          </a>
-          <div class="card_desc">{{this.attributes.title}}</div>
         </div>
+        <a href="http://localhost:3005/users/{{this.attributes.author}}">
+          <div class="card_author">@{{this.attributes.author}}</div>
+        </a>
+        <div class="card_desc">{{this.attributes.title}}</div>
       </div>
       {{/each}}
     </div>
