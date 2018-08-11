@@ -66,10 +66,14 @@ router.route('/new')
 router.route('/:id')
   .get((req, res) => {
     const id = req.params.id;
+    let showSidebar = false;
     if (isNaN(Number(id))) {
       req.flash('msg', `image doesn't exist`)
       return res.redirect('/gallery');
     }
+    if(req.user) {
+      showSidebar = true;
+    } 
     return Gallery
       .query({ where: { id } })
       .fetchAll()
@@ -81,7 +85,7 @@ router.route('/:id')
         return res.render('./gallerypages/photo', {
           photo: photo.models[0],
           message: req.flash('msg'),
-          username: true
+          username: showSidebar
         });
       })
       .catch(err => {
