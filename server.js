@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const PORT = process.env.port || 3005;
+const helpers = require('./helpers/helpers');
 const auth = require('./routes/auth');
 const user = require('./routes/users');
 const gallery = require('./routes/gallery');
@@ -26,11 +27,7 @@ app.use(session({
 app.use(flash());
 
 app.use(methodOverride((req, res) => {
-  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    let method = req.body._method;
-    delete req.body._method;
-    return method;
-  }
+  return helpers.methodSwitch(req, res );
 }));
 
 app.use(passport.initialize());
