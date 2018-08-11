@@ -66,6 +66,7 @@ router.route('/register')
       email: req.flash('email')
     });
   })
+
   .post((req, res) => {
     let {
       username,
@@ -91,7 +92,7 @@ router.route('/register')
           password: hashedPassword
         })
           .save()
-          .then(user => {
+          .then(() => {
             req.flash('msg1', 'successfully registered, please login');
             res.redirect('/login');
           })
