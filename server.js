@@ -8,7 +8,8 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const PORT = process.env.port || 3005;
-const helpers = require('./helpers/helpers');
+
+const { methodSwitch } = require('./helpers/helpers');
 const auth = require('./routes/auth');
 const user = require('./routes/users');
 const gallery = require('./routes/gallery');
@@ -27,7 +28,7 @@ app.use(session({
 app.use(flash());
 
 app.use(methodOverride((req, res) => {
-  return helpers.methodSwitch(req, res );
+  return methodSwitch(req, res );
 }));
 
 app.use(passport.initialize());
@@ -43,6 +44,10 @@ app.engine('.hbs', exphbs({
 }));
 
 app.set('view engine', '.hbs');
+
+app.get('*', (req, res) => {
+  res.status(404).render('404');
+});
 
 app.listen(PORT, () => {
   console.log(`Server Initiated on PORT: ${PORT}`)

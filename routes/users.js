@@ -11,7 +11,7 @@ router.get('/:user', (req, res) => {
   if (!req.user) {
     username = ''
   } else {
-    username = req.user.username
+    username = req.user.username 
   }
   const user = req.params.user;
   return Gallery
@@ -19,7 +19,7 @@ router.get('/:user', (req, res) => {
     .fetchAll()
     .then(photo => {
       if (photo.length < 1) {
-        req.flash('msg3', `this user doesn't exist`)
+        req.flash('error', `user doesn't exist`)
         return res.redirect('/gallery');
       }
       return res.render('./gallerypages/userphotos', {

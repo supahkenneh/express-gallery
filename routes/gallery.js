@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const helpers = require('../helpers/helpers');
+const { isAuthenticated } = require('../helpers/helpers');
 const Gallery = require('../db/models/Gallery');
+
 router.route('/')
-  .post(helpers.isAuthenticated, (req, res) => {
+  .post(isAuthenticated, (req, res) => {
     let {
       title,
       link,
@@ -14,13 +15,13 @@ router.route('/')
     author = req.user.username;
     link = link.trim().toLowerCase();
     if (title.length < 1) {
-      req.flash('error', 'title required')
+      req.flash('msg', 'title required')
       req.flash('photo', req.body)
       return res.redirect('/gallery/new')
     }
     return new Gallery({ author_name, title, author, link, description })
       .save()
-      .then(photo => {
+      .then(() => {
         return res.redirect('/gallery')
       })
       .catch(err => {
@@ -37,13 +38,15 @@ router.route('/')
           return res.render('./gallerypages/index', {
             firstpic: firstPic[0],
             gallery: remainingPics,
-            registration: true
+            registration: true,
+            message: req.flash('msg')
           })
         }
         return res.render('./gallerypages/index', {
           firstpic: firstPic[0],
           gallery: remainingPics,
           username: req.user.username,
+          message: req.flash('msg')
         });
       })
       .catch(err => {
@@ -52,9 +55,9 @@ router.route('/')
   });
 
 router.route('/new')
-  .get(helpers.isAuthenticated, (req, res) => {
+  .get(isAuthenticated, (req, res) => {
     return res.render('./gallerypages/new', {
-      message: req.flash('error'),
+      message: req.flash('msg'),
       username: req.user.username,
       photo: req.flash('photo')
     });
@@ -64,7 +67,7 @@ router.route('/:id')
   .get((req, res) => {
     const id = req.params.id;
     if (isNaN(Number(id))) {
-      req.flash('msg3', `image doesn't exist`)
+      req.flash('msg', `image doesn't exist`)
       return res.redirect('/gallery');
     }
     return Gallery
@@ -72,12 +75,12 @@ router.route('/:id')
       .fetchAll()
       .then(photo => {
         if (!photo.models[0]) {
-          req.flash('msg3', `image doesn't exist`)
+          req.flash('msg', `image doesn't exist`)
           return res.redirect('/gallery');
         }
         return res.render('./gallerypages/photo', {
           photo: photo.models[0],
-          message: req.flash('error'),
+          message: req.flash('msg'),
           username: true
         });
       })
@@ -85,7 +88,7 @@ router.route('/:id')
         return res.json({ message: err.message });
       });
   })
-  .put(helpers.isAuthenticated, (req, res) => {
+  .put(isAuthenticated, (req, res) => {
     const id = req.params.id;
     let {
       title,
@@ -96,33 +99,26 @@ router.route('/:id')
       .query({ where: { id } })
       .fetchAll()
       .then(result => {
-        if (req.user.username !== result.models[0].attributes.author) {
-          req.flash('error', `you don't have rights to edit this`);
-          return res.redirect(`/gallery/${id}/`)
-        }
         return new Gallery({ id })
-          .save({
-            title,
-            link,
-            description
-          })
-          .then(edited => {
-            req.flash('success', 'image updated')
-            return res.redirect(`/gallery/${id}`)
-          })
-          .catch(err => {
-            return res.json({ message: err.message });
-          });
+          .save({ title, link, description })
       })
+      .then(() => {
+        req.flash('msg', 'image updated')
+        return res.redirect(`/gallery/${id}`)
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   })
-  .delete(helpers.isAuthenticated, (req, res) => {
+
+  .delete(isAuthenticated, (req, res) => {
     const id = req.params.id;
     return Gallery
       .query({ where: { id } })
       .fetchAll()
       .then(result => {
         if (req.user.username !== result.models[0].attributes.author) {
-          req.flash('error', `you don't have the rights to delete this image`)
+          req.flash('msg', `you don't have the rights to delete this image`)
           return res.redirect(`/gallery/${id}`)
         }
         return new Gallery({ id })
@@ -137,15 +133,19 @@ router.route('/:id')
   });
 
 router.route('/:id/edit')
-  .get(helpers.isAuthenticated, (req, res) => {
+  .get(isAuthenticated, (req, res) => {
     const id = req.params.id;
     return Gallery
       .query({ where: { id } })
       .fetch()
-      .then(photo => {
+      .then(result => {
+        if (req.user.username !== result.attributes.author_name) {
+          req.flash('msg', `you don't have the rights to edit this image`)
+          return res.redirect(`/gallery/${id}`)
+        }
         return res.render('./gallerypages/edit', {
-          photo: photo.attributes,
-          message: req.flash('error'),
+          photo: result.attributes,
+          message: req.flash('msg'),
           username: req.user.username
         })
       })

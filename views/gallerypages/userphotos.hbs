@@ -1,6 +1,9 @@
 <div id="sidebar">
   {{#if username}}
-  <div id="username">logged in as: {{username}}</div>
+  <div id="username">logged in as:
+    <br>
+    <a href="http://localhost:3005/users/{{username}}" id="user_link">{{username}}</a>
+  </div>
   {{/if}}
   <div id="new_pic">
     <a href="http://localhost:3005/gallery/" id="logout_button">home</a>

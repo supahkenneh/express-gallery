@@ -153,6 +153,13 @@ textarea {
   margin-bottom: 40px;
   font-size: 16px; }
 
+#user_link {
+  text-decoration: none;
+  color: black; }
+
+#user_link:hover {
+  color: darkgray; }
+
 #logout {
   margin-top: 20px; }
 
@@ -327,6 +334,11 @@ textarea {
 
 .content_desc {
   font-size: 18px; }
+
+#error {
+  font-family: "Roboto", Sans-Serif;
+  font-size: 22px;
+  margin-top: 250px; }
 
 /*** pretty stuff ***/
 #delete_button:hover, #logout_button:hover, #id_back:hover, #post_button:hover, #back_button:hover, #landing_page:hover, .home_register:hover, .home_login:hover, #register_button:hover, #login_button:hover, #register_back:hover, #edit_button:hover, #put_button:hover {

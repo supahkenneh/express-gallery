@@ -184,6 +184,15 @@ textarea {
   font-size: 16px;
 }
 
+#user_link {
+  text-decoration: none;
+  color: black;
+}
+
+#user_link:hover {
+  color: darkgray;
+}
+
 #logout {
   margin-top: 20px;
 }
@@ -387,6 +396,12 @@ textarea {
 
 .content_desc {
   font-size: 18px;
+}
+
+#error {
+  font-family: $headerFont;
+  font-size: 22px;
+  margin-top: 250px;
 }
 
 /*** pretty stuff ***/
