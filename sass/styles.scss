@@ -209,7 +209,7 @@ textarea {
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .cards {
@@ -469,6 +469,10 @@ textarea {
     padding: 5px;
   }
 
+  #pictures {
+    margin-bottom: 50px;
+  }
+
   /*** logged in index ***/
 
   #secondary_header {
@@ -610,17 +614,7 @@ textarea {
     width: 350px;
   }
 
-  .card_image {
-    height: 233px;
-    width: 350px;
-  }
-
   #first_image {
-    height: 233px;
-    width: 350px;
-  }
-
-  #small_img {
     height: 233px;
     width: 350px;
   }
@@ -630,8 +624,14 @@ textarea {
     width: 100%;
   }
 
-  .cards {
-    height: 295px;
+  .card_image {
+    height: 350px;
+    width: 350px;
+  }
+  
+  #small_img {
+    max-height: 100%;
+    max-width: 100%;
   }
 
   #secondary_header {
@@ -646,6 +646,14 @@ textarea {
 
   #logout {
     padding-top: 10px;
+  }
+
+  .card_desc {
+    border-bottom: 1px solid $textColor;
+  }
+
+  .description_div {
+    border-bottom: 1px solid $textColor;
   }
 
   /*** photo id page ***/

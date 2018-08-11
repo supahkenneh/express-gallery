@@ -175,7 +175,7 @@ textarea {
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
-  margin-bottom: 150px; }
+  margin-bottom: 50px; }
 
 .cards {
   margin-top: 25px;
@@ -382,6 +382,8 @@ textarea {
     justify-content: space-evenly; }
   .home_register, .home_login {
     padding: 5px; }
+  #pictures {
+    margin-bottom: 50px; }
   /*** logged in index ***/
   #secondary_header {
     position: absolute;
@@ -471,20 +473,18 @@ textarea {
   .image_div {
     height: 233px;
     width: 350px; }
-  .card_image {
-    height: 233px;
-    width: 350px; }
   #first_image {
-    height: 233px;
-    width: 350px; }
-  #small_img {
     height: 233px;
     width: 350px; }
   #auth_body {
     top: 130px;
     width: 100%; }
-  .cards {
-    height: 295px; }
+  .card_image {
+    height: 350px;
+    width: 350px; }
+  #small_img {
+    max-height: 100%;
+    max-width: 100%; }
   #secondary_header {
     position: absolute;
     top: 130px; }
@@ -493,6 +493,10 @@ textarea {
     top: -45px; }
   #logout {
     padding-top: 10px; }
+  .card_desc {
+    border-bottom: 1px solid #7C7E84; }
+  .description_div {
+    border-bottom: 1px solid #7C7E84; }
   /*** photo id page ***/
   #photo_header {
     font-size: 24px; }
