@@ -89,10 +89,12 @@ router.route('/register')
         if (err) { return res.status(500); }
         return new User({
           username: req.body.username.toLowerCase(),
-          password: hashedPassword
+          password: hashedPassword,
+          name: name,
+          email: email
         })
           .save()
-          .then(() => {
+          .then((result) => {
             req.flash('msg1', 'successfully registered, please login');
             res.redirect('/login');
           })
