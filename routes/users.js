@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-const User = require('../db/models/User');
 const Gallery = require('../db/models/Gallery');
 
 router.get('/', (req, res) => {
@@ -19,7 +18,7 @@ router.get('/:user', (req, res) => {
     .fetchAll()
     .then(photo => {
       if (photo.length < 1) {
-        req.flash('error', `user doesn't exist`)
+        req.flash('msg', `user doesn't exist`)
         return res.redirect('/gallery');
       }
       return res.render('./gallerypages/userphotos', {
