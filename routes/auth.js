@@ -82,6 +82,10 @@ router.route('/register')
     } else if (req.body.password.length < 1) {
       req.flash('registerError', 'password required for registration');
       return res.redirect('/register');
+    } else if (req.body.name.length < 1) {
+      req.flash('registrationError', 'name required for registration');
+    } else if (req.body.email.length < 1) {
+      req.flash('registrationError', 'email required for registration')
     }
     bcrypt.genSalt(saltedRounds, (err, salt) => {
       if (err) { return res.status(500); }
@@ -89,10 +93,12 @@ router.route('/register')
         if (err) { return res.status(500); }
         return new User({
           username: req.body.username.toLowerCase(),
-          password: hashedPassword
+          password: hashedPassword,
+          name: name,
+          email: email
         })
           .save()
-          .then(() => {
+          .then((result) => {
             req.flash('msg1', 'successfully registered, please login');
             res.redirect('/login');
           })
