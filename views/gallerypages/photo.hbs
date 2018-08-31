@@ -1,6 +1,6 @@
 <div id="sidebar">
   <div id="back">
-    <a href="http://localhost:3005/gallery" id="id_back"> back </a>
+    <a href="/gallery" id="id_back"> back </a>
   </div>
   {{#if username}}
   <div id="edit_container">
@@ -16,7 +16,7 @@
     </form>
   </div>
   <div id="logout">
-    <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+    <a href="/logout" id="logout_button">logout</a>
   </div>
   {{/if}}
   <br>
@@ -26,7 +26,7 @@
   <h1 id="photo_header">{{photo.attributes.title}}</h1>
 </div>
 <div id="photo_content">
-  <a href="http://localhost:3005/users/{{photo.attributes.author}}">
+  <a href="/users/{{photo.attributes.author}}">
     <div id="author">@{{photo.attributes.author}}</div>
   </a>
 </div>

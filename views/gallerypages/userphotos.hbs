@@ -2,16 +2,16 @@
   {{#if username}}
   <div id="username">logged in as:
     <br>
-    <a href="http://localhost:3005/users/{{username}}" id="user_link">{{username}}</a>
+    <a href="/users/{{username}}" id="user_link">{{username}}</a>
   </div>
   {{/if}}
   <div id="new_pic">
-    <a href="http://localhost:3005/gallery/" id="logout_button">home</a>
+    <a href="/gallery/" id="logout_button">home</a>
   </div>
   <br> 
   {{#if username}}
   <div id="logout">
-    <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+    <a href="/logout" id="logout_button">logout</a>
   </div>
   {{/if}}
   <div id="side_messages">{{message}}</div>
@@ -23,7 +23,7 @@
   {{#each photos}}
   <div class="user_photo">
     <div class="photo_container">
-      <a href="http://localhost:3005/gallery/{{this.id}}">
+      <a href="/gallery/{{this.id}}">
         <img src="{{this.attributes.link}}" alt="image" id="mobile_image" height="400" width="600">
       </a>
     </div>

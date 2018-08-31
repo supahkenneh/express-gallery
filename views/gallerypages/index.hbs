@@ -3,14 +3,14 @@
     {{#if username}}
     <div id="username">logged in as:
       <br>
-      <a href="http://localhost:3005/users/{{username}}" id="user_link">{{username}}</a>
+      <a href="/users/{{username}}" id="user_link">{{username}}</a>
     </div>
     <div id="new_pic">
-      <a href="http://localhost:3005/gallery/new" id="post_button">post a picture</a>
+      <a href="/gallery/new" id="post_button">post a picture</a>
     </div>
     <br>
     <div id="logout">
-      <a href="http://localhost:3005/logout" id="logout_button">logout</a>
+      <a href="/logout" id="logout_button">logout</a>
     </div>
     {{/if}}
     <div id="side_messages">{{message}}</div>
@@ -18,22 +18,22 @@
   {{#if registration}}
   <div id="auth_body">
     <div id="home_register">
-      <a href="http://localhost:3005/register" class="home_register">register</a>
+      <a href="/register" class="home_register">register</a>
     </div>
     <br>
     <br>
     <div id="home_login">
-      <a href="http://localhost:3005/login" class="home_login">login</a>
+      <a href="/login" class="home_login">login</a>
     </div>
   </div>
   {{/if}}
   <div id="pictures">
     <div class="image_div">
-      <a href="http://localhost:3005/gallery/{{firstpic.id}}">
+      <a href="/gallery/{{firstpic.id}}">
         <img src="{{firstpic.attributes.link}}" alt="image" id="first_image" height="733" width="1100">
       </a>
     </div>
-    <a href="http://localhost:3005/users/{{firstpic.attributes.author}}">
+    <a href="/users/{{firstpic.attributes.author}}">
       <div class="author_div">@{{firstpic.attributes.author}}</div>
     </a>
     <div class="description_div">{{firstpic.attributes.title}}</div>
@@ -41,11 +41,11 @@
       {{#each gallery}}
       <div class="cards">
         <div class="card_image">
-          <a href="http://localhost:3005/gallery/{{this.id}}">
+          <a href="/gallery/{{this.id}}">
             <img src="{{this.attributes.link}}" alt="image" id="small_img">
           </a>
         </div>
-        <a href="http://localhost:3005/users/{{this.attributes.author}}">
+        <a href="/users/{{this.attributes.author}}">
           <div class="card_author">@{{this.attributes.author}}</div>
         </a>
         <div class="card_desc">{{this.attributes.title}}</div>
