@@ -6,7 +6,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'express_gallery',
-      user:     'gallery_user',
+      user:     'express_gallery_user',
       password: 'password'
     },
     pool: {
