@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const morgan = require('morgan');
 const Redis = require('connect-redis')(session);
 const passport = require('passport');
 const bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ const gallery = require('./routes/gallery');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./public'));
+app.use(morgan('tiny'));
 
 console.log('after public');
 
