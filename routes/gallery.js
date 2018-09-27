@@ -29,7 +29,6 @@ router.route('/')
       });
   })
   .get((req, res) => {
-    console.log('test');
 	  return Gallery
       .fetchAll()
       .then(gallery => {
