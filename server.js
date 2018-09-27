@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./public'));
 
+console.log('after public');
+
 app.use(session({
   store: new Redis(),
   secret: 'keyboard cat',
@@ -46,6 +48,7 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 app.get('*', (req, res) => {
+console.log('in catch all');
   res.status(404).render('404');
 });
 

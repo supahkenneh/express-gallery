@@ -29,7 +29,8 @@ router.route('/')
       });
   })
   .get((req, res) => {
-    return Gallery
+    console.log('test');
+	  return Gallery
       .fetchAll()
       .then(gallery => {
         let firstPic = gallery.models;
